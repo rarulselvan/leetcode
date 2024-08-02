@@ -8,10 +8,13 @@ int minSubArrayLen(int s, int* nums, int n)
     for (int i = 0; i < n; i++)
      {
         sum += nums[i];
+        printf("sum=%d\n", sum);
         while (sum >= s) 
         {
-            ans = (ans < (i + 1 - left)) ? ans : (i + 1 - left);
-            sum -= nums[left++];
+            //if(sum==s)            
+                ans = (ans > ((i- left)+1)) ? ((i - left)+1):ans;
+            sum = sum-nums[left]; // remove the left most 
+            left++;//and slide the window forward
         }
     }
     return (ans != INT_MAX) ? ans : 0;
