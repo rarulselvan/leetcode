@@ -5,6 +5,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0042-trapping-rain-water](https://github.com/rarulselvan/leetcode/tree/master/0042-trapping-rain-water) |
+| [0055-jump-game](https://github.com/rarulselvan/leetcode/tree/master/0055-jump-game) |
 ## Two Pointers
 |  |
 | ------- |
@@ -13,6 +14,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0042-trapping-rain-water](https://github.com/rarulselvan/leetcode/tree/master/0042-trapping-rain-water) |
+| [0055-jump-game](https://github.com/rarulselvan/leetcode/tree/master/0055-jump-game) |
 ## Stack
 |  |
 | ------- |
@@ -21,4 +23,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0042-trapping-rain-water](https://github.com/rarulselvan/leetcode/tree/master/0042-trapping-rain-water) |
+## Greedy
+|  |
+| ------- |
+| [0055-jump-game](https://github.com/rarulselvan/leetcode/tree/master/0055-jump-game) |
 <!---LeetCode Topics End-->
