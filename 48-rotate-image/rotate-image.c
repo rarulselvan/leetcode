@@ -20,11 +20,12 @@ rotate (int **matrix, int matrixSize, int *matrixColSize)
   int col = *matrixColSize;
   int temp = 0;
 
+// steop 1: trabspose the given matrix
   for (int i = 0; i < row; i++)
 	for (int j = i; j < col; j++)
 	  swap (matrix, i, j);
 
-  //reverse the rows (for clock wise rotation)
+  //reverse the rows (for clock wise 90 degree rotation)
   temp = row;
   row = col;
   int j=0;
