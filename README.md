@@ -32,4 +32,20 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/rarulselvan/leetcode/tree/master/0001-two-sum) |
+## Tree
+|  |
+| ------- |
+| [0112-path-sum](https://github.com/rarulselvan/leetcode/tree/master/0112-path-sum) |
+## Depth-First Search
+|  |
+| ------- |
+| [0112-path-sum](https://github.com/rarulselvan/leetcode/tree/master/0112-path-sum) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0112-path-sum](https://github.com/rarulselvan/leetcode/tree/master/0112-path-sum) |
+## Binary Tree
+|  |
+| ------- |
+| [0112-path-sum](https://github.com/rarulselvan/leetcode/tree/master/0112-path-sum) |
 <!---LeetCode Topics End-->
