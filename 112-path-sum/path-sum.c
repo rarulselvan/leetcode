@@ -23,7 +23,11 @@ bool hasPathSum(struct TreeNode* root, int targetSum)
 
     int ans=0;
     if(root->left)
+    {
         ans=hasPathSum(root->left, currentSum);
+        if(ans==true)
+            return true;
+    }
     if(root->right)
         ans=ans || hasPathSum(root->right, currentSum);
     return ans;   
