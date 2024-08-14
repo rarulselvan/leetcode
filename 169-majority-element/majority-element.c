@@ -35,6 +35,8 @@ int majorityElement(int* nums, int numsSize)
             res = num;
         } 
         count += (num == res) ? 1 : -1;
+        printf("%d..%d....", count, nums[i]);
+
     }
     return res;
 }
