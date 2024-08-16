@@ -26,7 +26,7 @@ void maxHeapify(int arr[], int i, int N)
 
 int findKthLargest(int* arr, int N, int k)
 {
-    for (int i = (N / 2) -1; i >= 0; --i)
+    for (int i = (N / 2) -1; i >= 0; i--)
         maxHeapify(arr, i, N);
     
     for(int i=0; i<k-1; i++)
