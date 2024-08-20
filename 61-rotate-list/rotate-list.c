@@ -23,7 +23,11 @@ struct ListNode* rotateRight(struct ListNode* head, int k)
     temp->next = head;
     k = k % length; // when k is more than length of list
     int end = length - k; // to get end of the list
-    while (end-- != 0) temp = temp->next;
+    while (end != 0)
+    {
+        temp = temp->next;
+        end--;
+    }
     
     // breaking last node link and pointing to NULL
     head = temp->next;
