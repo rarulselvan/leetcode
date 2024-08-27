@@ -5,7 +5,7 @@ void rotate(int* nums, int numsSize, int k)
     
     for (int i = 0; i < numsSize; i++) 
     {
-        temp[i] = nums[(i - k + numsSize) % numsSize];
+        temp[i] = nums[(numsSize+i-k) % numsSize];
     }
     
     for (int i = 0; i < numsSize; i++) 
