@@ -32,7 +32,9 @@ public:
         return res;
     }
 };
+
 */
+
 class Solution {
 public:
     int subarraySum(vector<int>& arr, int k)
@@ -45,8 +47,8 @@ public:
         for(int i = 1; i < n; i++)
             prefix[i] = prefix[i - 1] + arr[i];
         
-        
-        unordered_map<int,int> mp; // declare an unordered map    
+
+        map<int,int> mp; // declare an unordered map    
         int ans = 0; // to store the number of our subarrays having sum as 'k'
     
         for(int i = 0; i < n; i++) // traverse from the prefix array
@@ -57,13 +59,14 @@ public:
             // now, as we discussed find whether (prefix[i] - k) present in map or not
             if(mp.find(prefix[i] - k) != mp.end())
             {
+                cout << mp[prefix[i] - k] <<"...";
                 ans += mp[prefix[i] - k]; // if yes, then add it our answer
+               // ans=ans+1;
             }
             
             mp[prefix[i]]++; // put prefix sum into our map
         }
-        
         return ans; // and at last, return our answer
     }
-};
+}; 
 
