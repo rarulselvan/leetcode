@@ -37,22 +37,18 @@ class Solution {
 public:
     int subarraySum(vector<int>& arr, int k)
      {
-        int n = arr.size(); // take the size of the array
-        
+        int n = arr.size();
         int prefix[n]; // make a prefix array to store prefix sum
         
-        prefix[0] = arr[0]; // for element at index at zero, it is same
-        
-        // making our prefix array
+        // create the prefix array
+        prefix[0] = arr[0];
         for(int i = 1; i < n; i++)
-        {
-            prefix[i] = arr[i] + prefix[i - 1];
-        }
+            prefix[i] = prefix[i - 1] + arr[i];
         
-        unordered_map<int,int> mp; // declare an unordered map
         
+        unordered_map<int,int> mp; // declare an unordered map    
         int ans = 0; // to store the number of our subarrays having sum as 'k'
-        
+    
         for(int i = 0; i < n; i++) // traverse from the prefix array
         {
             if(prefix[i] == k) // if it already becomes equal to k, then increment ans
