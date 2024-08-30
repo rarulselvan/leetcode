@@ -31,7 +31,10 @@ int findKthLargest(int* arr, int N, int k)
     
     for(int i=0; i<k-1; i++)
     {
-        arr[0]=arr[N-1-i];//move(overwrite) the last element into arr[0]
+        //highest element is always on 0th position.
+        //discard the highest element and bring the last element into 0th position
+        arr[0]=arr[N-1-i];
+        //apply the heapify until the kth element is reached
         maxHeapify(arr, 0, N-i);//we are loosing elements
     }
     return arr[0];
