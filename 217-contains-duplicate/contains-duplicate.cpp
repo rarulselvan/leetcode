@@ -4,20 +4,19 @@ public:
     {
         int n = arr.size();
     
-        // Create an unordered_set to store the unique elements
-        unordered_set<int> st;
+        set<int> arrSet;
 
-        // Iterate through each element 
-        for (int i = 0; i < n; i++) {
+        // Iterate all elements one by one
+        for (int i = 0; i < n; i++)
+        {
         
             // If the element is already present, return true 
             // Else insert the element into the set
-            if (st.find(arr[i]) != st.end())
+            if (arrSet.find(arr[i]) != arrSet.end())
                 return true;
             else 
-                st.insert(arr[i]);
+                arrSet.insert(arr[i]);
         }
-
         // If no duplicates are found, return false
         return false;
     }
