@@ -20,7 +20,6 @@ public:
             string rt=to_string(root->val);
             string le=serialize(root->left);
             string rgt=serialize(root->right);
-           // cout << rt+le+rgt<< "  "<<endl;
             return " "+rt+le+rgt;
         }
 
