@@ -26,7 +26,8 @@ public:
             return root;
         
         vector<Node*> children;
-        for (Node* child : root->children) {
+        for (Node* child : root->children)
+        {
             children.emplace_back(cloneTree(child));
         }
         return new Node(root->val, children);
