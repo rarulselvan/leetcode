@@ -11,6 +11,7 @@ public:
             minQ.push(x);
             if (minQ.size() > k)
             {
+                //pop the 0-k-1 elements(k elements)
                 minQ.pop();
             }
         }
