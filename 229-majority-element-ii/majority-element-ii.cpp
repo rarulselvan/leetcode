@@ -21,9 +21,6 @@ public:
             if (cnt > n / 3)
                 res.push_back(ele);
         }
-
-       // if (res.size() == 2 && res[0] > res[1])
-         //   swap(res[0], res[1]);
         return res;
     }
 };
