@@ -65,7 +65,7 @@ public:
         }
         
         vector<string> result;
-        for (const auto& child : curr->children)
+        for (const auto child : curr->children)
         {
             result.emplace_back(child.first);
         }
