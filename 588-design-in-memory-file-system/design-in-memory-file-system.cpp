@@ -45,7 +45,7 @@ private:
         {
             if (!token.empty())
             {
-                tokens.emplace_back(token);
+                tokens.push_back(token);
             }
         }
         return tokens;
@@ -53,7 +53,6 @@ private:
 public:
     FileSystem() : root(new TrieNode()) 
     {
-        
     }
     
     vector<string> ls(string path) 
@@ -91,7 +90,6 @@ public:
     {
         return getNode(filePath)->content;
     }
-
 };
 
 
