@@ -57,7 +57,7 @@ public:
     
     vector<string> ls(string path) 
     {
-        auto curr = getNode(path);
+        TrieNode *curr = getNode(path);
         
         if (curr->isFile) 
         {
