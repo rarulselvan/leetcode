@@ -25,7 +25,7 @@ private:
     {
         vector<string> strs = split(path, '/');
         auto curr = root;
-        for (const auto& str : strs) 
+        for ( auto str : strs) 
         {
             if (!curr->children.count(str)) 
             {
