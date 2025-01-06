@@ -45,7 +45,7 @@ private:
         {
             if (!token.empty())
             {
-                tokens.push_back(token);
+                tokens.emplace_back(token);
             }
         }
         return tokens;
