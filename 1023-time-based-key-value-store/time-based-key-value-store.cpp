@@ -1,12 +1,12 @@
-
 class TimeMap 
 {
 private:
+                   //key (value, timestamp)
     unordered_map<string, vector<pair<string, int>>> keyValStore;
 public:
     TimeMap()
     {
-        
+        //does nothing        
     }
     void set(string key, string value, int timestamp) 
     {
@@ -47,5 +47,4 @@ public:
         }
         return "";
     }
-
 };
