@@ -1,4 +1,3 @@
-
 class Solution 
 {
 public:
@@ -8,8 +7,6 @@ public:
         vector<string> res;
         int numWords = words.size(); // Number of words in the input vector
 
-        // Loop through each word in the vector
-        //for (int i = 0; i < numWords; ++i) 
         for(string s1 : words)
         {
             cout <<endl;
@@ -22,7 +19,6 @@ public:
                 if(s2.find(s1) != string::npos) 
                 {
                     res.push_back(s1); 
-                    cout <<" break...";
                     break;
                 }
             }
