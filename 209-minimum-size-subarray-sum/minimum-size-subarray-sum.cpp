@@ -10,7 +10,7 @@ public:
         // 'j' is the start of the current subarray
         for (int i = 0, j = 0; i < n; ++i) 
         {
-            sum += nums[i];               // Increase the sum by the current element
+            sum = sum + nums[i];               // Increase the sum by the current element
           
             // While sum is not smaller than the target and start pointer 'j' has not reached the end
             while (j < n && sum >= target) 
