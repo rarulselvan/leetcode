@@ -1,30 +1,33 @@
 class Solution {
-public:
-    int kthSmallestSubarraySum(vector<int>& nums, int k) {
-        int l = 1 << 30, r = 0;
-        for (int& x : nums) {
-            l = min(l, x);
-            r += x;
-        }
-        auto f = [&](int s) {
-            int cnt = 0, t = 0;
-            for (int i = 0, j = 0; i < nums.size(); ++i) {
-                t += nums[i];
-                while (t > s) {
-                    t -= nums[j++];
-                }
-                cnt += i - j + 1;
-            }
-            return cnt;
-        };
-        while (l < r) {
-            int mid = (l + r) >> 1;
-            if (f(mid) >= k) {
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
+ public:
+    int kthSmallestSubarraySum(vector<int>& nums, int k)
+    {
+        int l = 0;
+        int r = accumulate(nums.begin(), nums.end(), 1);
+
+        while (l < r) 
+        {
+            const int m = (l + r) / 2;
+            if (numSubarrayLessThan(nums, m) >= k)
+                r = m;
+            else
+                l = m + 1;
         }
         return l;
+  }
+
+ private:
+    int numSubarrayLessThan(const vector<int>& nums, int m)
+    {
+        int res = 0;
+        int sum = 0;
+        for (int l = 0, r = 0; r < nums.size(); ++r)
+        {
+            sum += nums[r];
+            while (sum > m)
+                sum -= nums[l++];
+            res += r - l + 1;
+        }
+        return res;
     }
 };
