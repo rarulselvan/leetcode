@@ -19,13 +19,9 @@ public:
             {
                 int x = nums[i] + nums[left] + nums[right];
                 if (x < 0) 
-                {
                     left++;
-                } 
                 else if (x > 0) 
-                {
                     right--;
-                } 
                 else
                 {
                     //found the triplet...push into vector
@@ -34,14 +30,20 @@ public:
                     left++;
                     right --;
 
-                    while (left < right && nums[left] == nums[left - 1])
+                   /* while (left < right && nums[left] == nums[left - 1])
                         left++;
                     
                     while (left < right && nums[right] == nums[right + 1]) 
                         right--;
+                        */
                 }
             }
         }
+        sort(ans.begin(), ans.end());
+        // Remove consecutive duplicate elements
+        auto it = unique(ans.begin(), ans.end());
+        // Erase the extra elements at the end
+        ans.erase(it, ans.end());
         return ans;
     }
 };
