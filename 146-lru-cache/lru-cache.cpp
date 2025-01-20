@@ -67,16 +67,19 @@ public:
         } 
         else 
         {
-            Node* node = new Node(key, value);
-            cache[key] = node;
-            addToHead(node);
-            if (++size > capacity) 
+            if (size == capacity) 
             {
-                node = tail->prev;
+                //remove the tail node
+                Node *node = tail->prev;
                 cache.erase(node->key);
                 removeNode(node);
                 --size;
             }
+            Node* node = new Node(key, value);
+            cache[key] = node;
+            addToHead(node);
+            size++;//increment the page count
+            
         }
     }
 };
