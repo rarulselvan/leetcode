@@ -22,16 +22,20 @@ private:
     void removeNode(Node* node)
     {
         //not freeing memory leak?
+        Node *temp=node;
         node->prev->next = node->next;
         node->next->prev = node->prev;
     }
 
     void addToHead(Node* node)
     {
+        if(head!=node)
+        {
         node->next = head->next;
         node->prev = head;
         head->next->prev = node;
         head->next = node;
+        }
     }
 
 public:
@@ -79,7 +83,6 @@ public:
             cache[key] = node;
             addToHead(node);
             size++;//increment the page count
-            
         }
     }
 };
