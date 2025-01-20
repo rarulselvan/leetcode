@@ -1,7 +1,7 @@
 class Solution 
 {
 public:
-    int uniquePathsDP(int m, int n, vector<vector<int>> &dp) 
+    int uniquePathsDP(int m, int n, vector<vector<int>> &dp) //receive as reference
     {
         if(m==0)
             return 1;
