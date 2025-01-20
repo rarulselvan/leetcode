@@ -72,11 +72,9 @@ public:
         {
             if (size == capacity) 
             {
-                //remove the tail node
                 Node *node = tail->prev;
-                //cache.erase(node->key);
-                removeNode(node);
-                cache.erase(node->key);
+                removeNode(node); //remove the last(but one?)entry from the doubly list
+                cache.erase(node->key);//erase from the hash map
                 --size;
             }
             Node* node = new Node(key, value);
