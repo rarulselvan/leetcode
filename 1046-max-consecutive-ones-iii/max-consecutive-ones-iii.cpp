@@ -7,21 +7,20 @@ public:
 
         // Start and end pointer of the window 
         int start = 0, end = 0; 
-        
         // Counter to keep track of zeros in current window
-        int cnt = 0;
+        int countk = 0;
         
         while (end < arr.size())
         {
             if (arr[end] == 0)
-                cnt++;
+                countk++;
             
             // Shrink the window from left if number of 
             // zeroes are greater than k
-            while (cnt > k) {
+            while (countk > k) 
+            {
                 if (arr[start] == 0)
-                    cnt--;
-                    
+                    countk--;        
                 start++;
             }
             
