@@ -15,8 +15,7 @@ public:
             if (arr[end] == 0)
                 countk++;
             
-            // Shrink the window from left if number of 
-            // zeroes are greater than k
+            // Shrink the window from left(move the start pointer to right) if number of zeroes are greater than k
             while (countk > k) 
             {
                 if (arr[start] == 0)
@@ -24,12 +23,10 @@ public:
                 start++;
             }
             
-            res = max(res, (end - start + 1));
+            res = max(res, (end - start + 1));// the array start from zero hence add 1 here
             
-            // Increment end pointer to expand the window
-            end++; 
+            end++; //extend the end pointer by one of every iteration
         }
-        
-        return res; 
+        return res;
     }
 };
