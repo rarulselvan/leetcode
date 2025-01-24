@@ -1,23 +1,25 @@
-class MyCalendar {
-public:
-    MyCalendar() {
-    }
+class MyCalendar 
+{
+private:
+    vector<pair<int, int>> calendar;
 
-    bool book(int startTime, int endTime) {
-        auto e = m.lower_bound(startTime + 1);
-        if (e != m.end() && e->second < endTime) {
-            return false;
+public:
+    bool book(int start, int end)
+    {
+        for (const auto [s, e] : calendar)
+        {
+            if (start < e && end > s ) 
+                return false;
         }
-        m[endTime] = startTime;
+        calendar.emplace_back(start, end);
         return true;
     }
-
-private:
-    map<int, int> m;
 };
-
-/**
- * Your MyCalendar object will be instantiated and called as such:
- * MyCalendar* obj = new MyCalendar();
- * bool param_1 = obj->book(startTime,endTime);
- */
+/* Example
+voin main()
+{
+    MyCalendar myCalendar = new MyCalendar();
+    myCalendar.book(10, 20); // return True
+    myCalendar.book(15, 25); // return False, It can not be booked because time 15 is already booked by another event.
+    myCalendar.book(20, 30);
+}*/
