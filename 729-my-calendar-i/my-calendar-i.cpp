@@ -1,3 +1,4 @@
+
 class MyCalendar 
 {
 private:
@@ -15,6 +16,7 @@ public:
         return true;
     }
 };
+
 /* Example
 voin main()
 {
