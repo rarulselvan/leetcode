@@ -10,10 +10,9 @@ public:
         if (dp[i][sum]!=-1) 
             return dp[i][sum];
 
-        int take = INT_MAX;
+        int take = -1;
 
         // take a coin only if its value is greater than 0.
-        //if (coins[i]>0) 
         {
             take = minCoinsRecur(coins, sum-coins[i], i,dp);
             if (take != INT_MAX) take++;
