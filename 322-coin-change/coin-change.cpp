@@ -1,34 +1,33 @@
 class Solution 
 {
 public:
-    int minCoinsRecur(int i, int sum, vector<int> &coins, vector<vector<int>> &memo) 
+    int minCoinsRecur(vector<int> &coins, int sum, int i, vector<vector<int>> &dp) 
     {
         // base case
         if (sum == 0) return 0;
         if (sum <0 || i == coins.size()) return INT_MAX;
 
-        if (memo[i][sum]!=-1) 
-            return memo[i][sum];
+        if (dp[i][sum]!=-1) 
+            return dp[i][sum];
 
         int take = INT_MAX;
 
-        // take a coin only if its value
-        // is greater than 0.
-        if (coins[i]>0) 
+        // take a coin only if its value is greater than 0.
+        //if (coins[i]>0) 
         {
-            take = minCoinsRecur(i, sum-coins[i], coins, memo);
+            take = minCoinsRecur(coins, sum-coins[i], i,dp);
             if (take != INT_MAX) take++;
         }
 
-        int noTake = minCoinsRecur(i+1, sum, coins, memo);
+        int noTake = minCoinsRecur(coins,sum,i+1, dp);
 
-        return memo[i][sum] = min(take, noTake);
+        return dp[i][sum] = min(take, noTake);
     }
 
     int coinChange(vector<int> &coins, int sum)
     {
-        vector<vector<int>> memo(coins.size(), vector<int>(sum+1, -1));
-        int ans = minCoinsRecur(0, sum, coins, memo);
+        vector<vector<int>> dp(coins.size(), vector<int>(sum+1, -1));
+        int ans = minCoinsRecur(coins, sum, 0, dp);
         return ans!=INT_MAX?ans:-1;
     }
 };
