@@ -5,20 +5,22 @@ public:
     {
         // base case
         if (sum == 0) return 0;
-        if (sum <0 || i == coins.size()) return INT_MAX;
+        // If sume cannot attached(went to below zero) or tried with all coins retunr -1
+        if (sum <0 || i == coins.size())
+            return INT_MAX;
 
         if (dp[i][sum]!=-1) 
             return dp[i][sum];
 
         int take = -1;
 
-        // take a coin only if its value is greater than 0.
-        {
-            take = minCoinsRecur(coins, sum-coins[i], i,dp);
-            if (take != INT_MAX) take++;
-        }
-
-        int noTake = minCoinsRecur(coins,sum,i+1, dp);
+        //Include the coin hence (sum-coin) try with the same coin
+        take = minCoinsRecur(coins, sum-coins[i], i,dp);
+        if (take != INT_MAX) 
+            take++;
+        
+        // Exclude the coin (hence send the sum as it is) and try with next coin (i+1)
+        int noTake = minCoinsRecur(coins,sum, i+1, dp);
 
         return dp[i][sum] = min(take, noTake);
     }
