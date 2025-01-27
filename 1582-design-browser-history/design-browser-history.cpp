@@ -19,7 +19,6 @@ public:
 
     string back(int steps) 
     {
-        //for (; steps && stk1.size() > 1; --steps) 
         for (int i=0; i<steps && 1<stk1.size(); steps--) 
         {
             stk2.push(stk1.top());
@@ -30,7 +29,7 @@ public:
 
     string forward(int steps) 
     {
-        for (; steps && !stk2.empty(); --steps) 
+        for (int i=0; i<steps && !stk2.empty(); steps--) 
         {
             stk1.push(stk2.top());
             stk2.pop();
