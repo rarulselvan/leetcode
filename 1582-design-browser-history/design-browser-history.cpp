@@ -29,7 +29,7 @@ public:
 
     string forward(int steps) 
     {
-        for (int i=0; i<steps && !stk2.empty(); steps--) 
+        for (int i=0; i<steps && stk2.size(); steps--) 
         {
             stk1.push(stk2.top());
             stk2.pop();
