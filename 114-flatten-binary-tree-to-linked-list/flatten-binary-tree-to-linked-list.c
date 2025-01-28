@@ -8,7 +8,7 @@
  */
 void flatten(struct TreeNode* root) 
 {
-    //In order traversal
+    //Pre order traversal
     static struct TreeNode*  prev = NULL;
 	if(root !=NULL)
 	{
