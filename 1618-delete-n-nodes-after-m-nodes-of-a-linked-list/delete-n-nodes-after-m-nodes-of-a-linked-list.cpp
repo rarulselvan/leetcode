@@ -27,20 +27,15 @@ public:
                 head=head->next;
                 mcount--;
             }
-           // if(head)
-               // cout <<head->val;
             if(head)
-            {
-                
+            {   
                 while(ncount && head)
                 {
                     head=head->next;
                     ncount--;
+                    //TBD free the nodes here
                 }
-               
                 tmphead->next=head;
-                if(head)
-                cout <<tmphead->val<<" ----> "<<head->val<<endl;
             }
         }
         return oriHead;
