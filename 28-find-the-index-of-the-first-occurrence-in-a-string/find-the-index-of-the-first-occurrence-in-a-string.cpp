@@ -1,8 +1,8 @@
-class Solution {
-public:
-    int strStr(string haystack, string needle) {
-
-        return haystack.find(needle);
-        
-    }
+class Solution
+{
+    public:
+        int strStr(string haystack, string needle)
+        {
+            return haystack.find(needle);       
+        }
 };
