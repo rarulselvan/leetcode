@@ -6,11 +6,7 @@ public:
         //sort using lamda function
         sort(points.begin(), points.end(), [](const vector<int> a, const vector<int> b)
                                             {
-                                               // int x = (a[0] * a[0] + a[1] * a[1]);
-                                               // int y = (b[0] * b[0] + b[1] * b[1]);
-                                               // cout << x <<"  "<< y<<endl;
-                                               // return x < y;
-
+                                                //sqrt is not required...area is sufficient to compare
                                                 return (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
                                             }
         );
