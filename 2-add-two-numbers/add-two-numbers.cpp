@@ -21,8 +21,6 @@ public:
         {
             int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
             cout << sum%10<< " ";
-            //if(sum/10)
-            //    cout <<sum/10<<" ";
 
             carry = sum / 10;
             if(!current)
