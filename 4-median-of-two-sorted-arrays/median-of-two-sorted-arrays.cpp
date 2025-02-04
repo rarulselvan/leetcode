@@ -5,15 +5,15 @@ public:
         int size1=nums1.size();
         int size2=nums2.size();
         int size3=size1+size2;
-        int arr3[size3];
+        vector<int> arr3;
 
-        for (int i = 0; i < size1; ++i)
-            arr3[i] = nums1[i];
+        for (auto x: nums1)
+            arr3.push_back(x);
 
-        for (int i = 0; i < size2; ++i) 
-            arr3[size1 + i] = nums2[i];
+        for (auto x: nums2)
+            arr3.push_back(x);
             
-        sort(arr3, arr3+size3);
+        sort(arr3.begin(), arr3.end());//, arr3+size3);
 
             // Calculate and return the median
         int mid = size3 / 2;
