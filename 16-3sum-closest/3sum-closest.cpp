@@ -5,7 +5,7 @@ public:
         // three number can be anywhere in the array... need notbe consecutive .hence sort it
         sort(nums.begin(),nums.end());
         
-        int res = 0xFFFF;//1 << 30;
+        int res = 0XFFFF;
 
         for(int i=0; i<nums.size()-2; i++)
         {
