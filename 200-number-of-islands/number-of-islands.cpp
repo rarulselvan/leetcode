@@ -69,6 +69,7 @@ public:
                 {
                     int newRow = row + delrow; 
                     int newCol = col + delcol; 
+                    //skip the diagonal traversal
                     if((newRow ==row+1 && newCol==col+1) || (newRow ==row-1 && newCol==col-1) || (newRow ==row+1 && newCol==col-1) || (newRow ==row-1 && newCol==col+1))
                         continue;
             
