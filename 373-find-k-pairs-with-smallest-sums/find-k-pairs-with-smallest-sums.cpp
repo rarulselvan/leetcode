@@ -2,9 +2,11 @@ class Solution
 {
 public:
     // Function to find k smallest pairs with minimal sum
-    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k)
+    {
         // Lambda function to compare pairs based on the sum of elements they point to in nums1 and nums2
-        auto comparePairs = [&nums1, &nums2](const pair<int, int>& a, const pair<int, int>& b) {
+        auto comparePairs = [&](const pair<int, int>& a, const pair<int, int>& b) 
+        {
             return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
         };
 
