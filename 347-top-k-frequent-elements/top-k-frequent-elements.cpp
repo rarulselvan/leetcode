@@ -36,7 +36,7 @@ public:
         //greater<pair<int, int>> ensures a min-heap, sorting pairs by the first element (default behavior for pair).
 
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
-        //priority_queue<pair<int, int>> minHeap;
+        //priority_queue<<pair<int, int>> minHeap;
         // Iterate over the frequency map.
         for (const auto& element : Map) 
         {
