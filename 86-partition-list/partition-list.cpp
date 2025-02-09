@@ -13,21 +13,30 @@ class Solution
 public:
     ListNode* partition(ListNode* head, int x) 
     {
+        //Create tow dummy nodes
         ListNode* l = new ListNode();
         ListNode* r = new ListNode();
+
         ListNode* tl = l;
         ListNode* tr = r;
-        for (; head; head = head->next) {
-            if (head->val < x) {
+        //for (; head; head = head->next) 
+        while (head)
+        {
+            if (head->val < x) 
+            {
                 tl->next = head;
                 tl = tl->next;
-            } else {
+            } 
+            else
+            {
                 tr->next = head;
                 tr = tr->next;
             }
+            head=head->next;
         }
         tr->next = nullptr;
         tl->next = r->next;
+        //try to free the memory of l & r here
         return l->next;
     }
 };
