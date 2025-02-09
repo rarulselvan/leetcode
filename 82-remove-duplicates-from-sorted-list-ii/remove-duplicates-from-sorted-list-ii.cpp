@@ -37,8 +37,10 @@ public:
             head = head->next;  // Move to next node
         }
         
+        //free the memory of dummy node
         ListNode *temp=dummy->next;
         delete dummy;
+
         return temp;
     }
 };
