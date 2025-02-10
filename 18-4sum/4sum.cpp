@@ -23,18 +23,18 @@ public:
                 while (k < l) 
                 {
                     long long x = (long long) nums[i] + nums[j] + nums[k] + nums[l];
-                    if (x < target) {
+                    if (x < target) 
                         ++k;
-                    } else if (x > target) {
+                    else if (x > target)
                         --l;
-                    } else {
+                    else
+                    {
                         ans.push_back({nums[i], nums[j], nums[k++], nums[l--]});
-                        while (k < l && nums[k] == nums[k - 1]) {
+                        while (k < l && nums[k] == nums[k - 1]) 
                             ++k;
-                        }
-                        while (k < l && nums[l] == nums[l + 1]) {
+                        
+                        while (k < l && nums[l] == nums[l + 1]) 
                             --l;
-                        }
                     }
                 }
             }
