@@ -6,7 +6,6 @@ public:
         vector<vector<int>> ans;
         int n = nums.size();
 
-        
         for (int i = 0; i < n - 2; i++) 
         {
             if (i >0 )// skip the consecutive elements if they are same
