@@ -18,7 +18,6 @@ public:
             else
                 count++;    // If not present increase count by 1
         }
-        cout << count;
         return count;
     }
 };
