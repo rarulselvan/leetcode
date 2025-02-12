@@ -21,6 +21,7 @@ public:
      
     }
 };*/
+/*
 class Solution
 {
 public:
@@ -36,7 +37,9 @@ public:
         //greater<pair<int, int>> ensures a min-heap, sorting pairs by the first element (default behavior for pair).
 
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
-        //priority_queue<<pair<int, int>> minHeap;
+        //priority_queue<<pair<int, int>> maxHeap;
+        //In C++, you can declare a max-heap for pair<int, int> using priority_queue. Since priority_queue is a max-heap by default, it will order pairs 
+        //in     descending order based on the first element.
         // Iterate over the frequency map.
         for (const auto& element : Map) 
         {
@@ -56,5 +59,31 @@ public:
             minHeap.pop();
         }
         return res;
+    }
+};
+*/
+class Solution
+{
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) 
+    {
+        unordered_map<int, int> Map;
+        vector<pair<int, int>>arr;
+
+        for(auto x: nums)
+        Map[x]++;
+
+
+        for(auto x: Map)
+            arr.push_back({x.second, x.first});
+        
+        sort(arr.rbegin(),arr.rend());//sort decreasing order
+
+        vector<int> res;
+        for(int i=0; i<k; i++)
+            res.push_back((arr[i].second));
+
+        return res;
+
     }
 };
