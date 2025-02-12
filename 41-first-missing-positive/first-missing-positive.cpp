@@ -12,7 +12,6 @@ public:
         {
             if(Map[i]==false) return i;
         }
-        cout <<"i="<<i;
         return i;
     }
 };
