@@ -2,15 +2,17 @@ class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) 
     {
-        unordered_map<int, bool> myMap;
+        unordered_map<int, bool> Map;
         // Add all elements into hash map
         for(int x: nums)
-            myMap[x]=true;
+            Map[x]=true;
         
         int i=1;
-        for(i=1; i<= (nums.size()+1); i++)
-            if(myMap[i]==false) return i;
-    
-        return ++i;
+        for( i=1; i<= (nums.size()); i++)
+        {
+            if(Map[i]==false) return i;
+        }
+        cout <<"i="<<i;
+        return i;
     }
 };
