@@ -46,34 +46,39 @@ public:
 }
 };
 */
-class Solution {
+class Solution 
+{
 public:
-string s;
-vector<vector<int>> memo;
+    string s;
+    vector<vector<int>> memo;
 
-bool isPalindrome(int i, int j) {
-    if (i >= j) return true;
-    if (memo[i][j] != -1) return memo[i][j];
-    
-    return memo[i][j] = (s[i] == s[j] && isPalindrome(i + 1, j - 1));
-}
-
-string longestPalindrome(string &str) {
-    s = str;
-    int n = s.size();
-    memo.assign(n, vector<int>(n, -1));
-    
-    int start = 0, maxLen = 1;
-    
-    for (int i = 0; i < n; ++i) {
-        for (int j = i; j < n; ++j) {
-            if (isPalindrome(i, j) && (j - i + 1) > maxLen) {
-                start = i;
-                maxLen = j - i + 1;
-            }
-        }
+    bool isPalindrome(int i, int j) 
+    {
+        if (i >= j) return true;
+        if (memo[i][j] != -1) return memo[i][j];
+        
+        return memo[i][j] = (s[i] == s[j] && isPalindrome(i + 1, j - 1));
     }
-    
-    return s.substr(start, maxLen);
-}
+
+    string longestPalindrome(string &str) 
+    {
+        s = str;
+        int n = s.size();
+        memo.assign(n, vector<int>(n, -1));
+        
+        int start = 0, maxLen = 1;
+        
+        for (int i = 0; i < n; ++i) 
+        {
+            for (int j = i; j < n; ++j) 
+            {
+                if (isPalindrome(i, j) && (j - i + 1) > maxLen) 
+                {
+                    start = i;
+                    maxLen = j - i + 1;
+                }
+            }
+        }      
+        return s.substr(start, maxLen);
+    }
 };
