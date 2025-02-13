@@ -1,24 +1,31 @@
-
-class Solution {
+class Solution 
+{
 public:
-    vector<vector<string>> solveNQueens(int n) {
-        vector<int> col(n);
-        vector<int> dg(n << 1);
-        vector<int> udg(n << 1);
+    vector<vector<string>> solveNQueens(int n) 
+    {
+        vector<int> colposition(n);
+        vector<int> dgposition(n << 1);
+        vector<int> udgposition(n << 1);
         vector<vector<string>> ans;
         vector<string> t(n, string(n, '.'));
-        function<void(int)> dfs = [&](int i) -> void {
-            if (i == n) {
+
+        function<void(int)> dfs = [&](int row)
+        {
+            if (row == n) 
+            {
+                //got the solution save it and return
                 ans.push_back(t);
                 return;
             }
-            for (int j = 0; j < n; ++j) {
-                if (col[j] + dg[i + j] + udg[n - i + j] == 0) {
-                    t[i][j] = 'Q';
-                    col[j] = dg[i + j] = udg[n - i + j] = 1;
-                    dfs(i + 1);
-                    col[j] = dg[i + j] = udg[n - i + j] = 0;
-                    t[i][j] = '.';
+            for (int col = 0; col < n; col++) 
+            {
+                if (colposition[col] + dgposition[row + col] + udgposition[n - row + col] == 0) 
+                {
+                    t[row][col] = 'Q';
+                    colposition[col] = dgposition[row + col] = udgposition[n - row + col] = 1;
+                    dfs(row + 1);//call itself
+                    colposition[col] = dgposition[row + col] = udgposition[n - row + col] = 0;
+                    t[row][col] = '.';
                 }
             }
         };
