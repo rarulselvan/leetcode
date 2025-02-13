@@ -1,5 +1,5 @@
 
-/*class Solution {
+class Solution {
 public:
     vector<vector<string>> solveNQueens(int n) {
         vector<int> col(n);
@@ -26,7 +26,7 @@ public:
         return ans;
     }
 };
-*/
+/*
 class Solution {
   public:
     bool isSafe1(int row, int col, vector < string > board, int n) {
@@ -83,8 +83,9 @@ class Solution {
       string s(n, '.');
       for (int i = 0; i < n; i++) 
         board[i] = s;
-        
+
       solve(0, board, ans, n);
       return ans;
     }
 };
+*/
