@@ -50,35 +50,43 @@ class Solution
 {
 public:
     string s;
-    vector<vector<int>> memo;
+    vector<vector<int>> dp;
 
     bool isPalindrome(int i, int j) 
     {
-        if (i >= j) return true;
-        if (memo[i][j] != -1) return memo[i][j];
+        if(i>j)
+            cout <<" This is vague"<<endl;
+        if (i >= j)
+            return dp[i][j]=true;
+
+        //Already computed hence resturn the value
+        if (dp[i][j] != -1) 
+            return dp[i][j];
         
-        return memo[i][j] = (s[i] == s[j] && isPalindrome(i + 1, j - 1));
+        return dp[i][j] = (s[i] == s[j] && isPalindrome(i + 1, j - 1));
     }
 
     string longestPalindrome(string &str) 
     {
         s = str;
         int n = s.size();
-        memo.assign(n, vector<int>(n, -1));
+        dp.assign(n,vector<int>(n, -1));
         
         int start = 0, maxLen = 1;
         
-        for (int i = 0; i < n; ++i) 
+        for (int i = 0; i < n; i++) 
         {
-            for (int j = i; j < n; ++j) 
+            for (int j = i; j < n; j++) 
             {
-                if (isPalindrome(i, j) && (j - i + 1) > maxLen) 
+                if (isPalindrome(i, j) && (j - i + 1) > maxLen) // if thsi palindrome is larger than previous one consider this else continue
                 {
                     start = i;
                     maxLen = j - i + 1;
                 }
+                else
+                    continue;
             }
-        }      
+        }
         return s.substr(start, maxLen);
     }
 };
