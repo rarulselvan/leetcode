@@ -7,7 +7,7 @@ public:
         vector<vector<int>> ans;
         if (n < 4)
             return ans;
-        
+                    
         sort(nums.begin(), nums.end());
         for (int i = 0; i < n - 3; ++i)
         {
