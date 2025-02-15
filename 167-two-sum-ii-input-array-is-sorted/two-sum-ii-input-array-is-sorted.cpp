@@ -5,7 +5,6 @@ public:
     {
         int i=0;
         int j=numbers.size()-1;
-        vector<int>res;
         while(i<j)
         {
             int x = numbers[i] + numbers[j];
