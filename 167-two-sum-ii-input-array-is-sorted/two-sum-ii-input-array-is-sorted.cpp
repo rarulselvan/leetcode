@@ -10,13 +10,12 @@ public:
         {
             int x = numbers[i] + numbers[j];
             if (x == target) 
-            {
                 break;
-            }
             if (x < target) 
                 ++i;
              else 
                 --j;
         }
-        return {i+1, j+1};    }
+        return {i+1, j+1}; 
+    }
 };
