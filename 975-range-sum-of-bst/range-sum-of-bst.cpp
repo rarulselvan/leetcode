@@ -12,8 +12,10 @@
 
 class Solution 
 {
+private:
+    int res;
 public:
-    void check(TreeNode* root, int Left, int Right, int &res) 
+    void check(TreeNode* root, int Left, int Right) 
     {
         if(root == NULL) 
             return;
@@ -21,8 +23,8 @@ public:
         if(root->val >= Left && root->val <= Right) 
             res+=root->val;
         
-        check(root->left, Left, Right, res);
-        check(root->right, Left, Right, res);
+        check(root->left, Left, Right);
+        check(root->right, Left, Right);
     }
 
     int rangeSumBST(TreeNode* root, int L, int R)
@@ -30,8 +32,8 @@ public:
         if(root == NULL)
             return 0;
     
-        int res = 0;
-        check(root, L, R, res);
+        res = 0;
+        check(root, L, R);
         return res;
     }
 };
