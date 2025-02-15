@@ -1,4 +1,4 @@
-class Solution
+/*class Solution
 {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
@@ -38,4 +38,45 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
         }
     }
     return NULL;
-}
+} */
+
+class Solution
+{
+public:
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector <int> res;
+
+        vector<pair<int, int>> pairs;
+        for (int i = 0; i < nums.size(); i++)
+            pairs.push_back({nums[i], i});
+    
+
+        sort(pairs.begin(), pairs.end());
+
+        int i=0;
+        int j=nums.size()-1;
+        while(i<j)
+        {
+            int sum=pairs[i].first + pairs[j].first;
+            if(sum==target)
+            {
+                cout <<target<<" "<<i<<"="<<"  "<<nums[i]<<j<<"="<<nums[j]<<endl;
+                res.push_back(pairs[i].second);
+                res.push_back(pairs[j].second);
+                break;
+            }
+            else if(sum<target)
+            {
+                cout <<"i++"<<endl;
+                i++;
+            }
+            else
+            {
+                cout <<"j--"<<endl;
+                j--;
+            }
+        }
+        return res;
+    }
+};
