@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     vector<int> twoSum(vector<int>& numbers, int target) 
     {
@@ -10,8 +11,6 @@ public:
             int x = numbers[i] + numbers[j];
             if (x == target) 
             {
-                res.push_back(i+1);
-                res.push_back(j+1);
                 break;
             }
             if (x < target) 
@@ -19,6 +18,5 @@ public:
              else 
                 --j;
         }
-        return res;
-    }
+        return {i+1, j+1};    }
 };
