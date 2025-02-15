@@ -61,21 +61,14 @@ public:
             int sum=pairs[i].first + pairs[j].first;
             if(sum==target)
             {
-                cout <<target<<" "<<i<<"="<<"  "<<nums[i]<<j<<"="<<nums[j]<<endl;
                 res.push_back(pairs[i].second);
                 res.push_back(pairs[j].second);
                 break;
             }
             else if(sum<target)
-            {
-                cout <<"i++"<<endl;
                 i++;
-            }
             else
-            {
-                cout <<"j--"<<endl;
                 j--;
-            }
         }
         return res;
     }
