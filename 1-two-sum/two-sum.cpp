@@ -51,7 +51,6 @@ public:
         for (int i = 0; i < nums.size(); i++)
             pairs.push_back({nums[i], i});
     
-
         sort(pairs.begin(), pairs.end());
 
         int i=0;
