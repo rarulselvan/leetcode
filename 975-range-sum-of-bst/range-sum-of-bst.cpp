@@ -19,16 +19,17 @@ public:
             return;
 
         if(root->val >= Left && root->val <= Right) 
-        {
             res+=root->val;
-        }
+        
         check(root->left, Left, Right, res);
         check(root->right, Left, Right, res);
     }
 
-    int rangeSumBST(TreeNode* root, int L, int R) {
+    int rangeSumBST(TreeNode* root, int L, int R)
+    {
         if(root == NULL)
             return 0;
+    
         int res = 0;
         check(root, L, R, res);
         return res;
