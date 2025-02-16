@@ -14,13 +14,10 @@ public:
             if (nums[i] > nums[nextEle]) 
                 count++;
     }
-
-    // Return true if there is at most one point where the
-    // sequence is out of order
-
+    
     if(count>1)        
         return false;
-    else
+    else// Return true if there is at most one point where thesequence is out of order
         return true;
 
     }
