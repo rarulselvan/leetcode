@@ -9,7 +9,7 @@ public:
 
         for (int windowEnd = 0; windowEnd < fruits.size(); windowEnd++)
         {
-            //Add into fruit basket
+            //Add into fruit basket... non of the tree should be skipped(every tree is accounted)
             fruitBasket[fruits[windowEnd]]++;
 
             while (fruitBasket.size() > 2) 
