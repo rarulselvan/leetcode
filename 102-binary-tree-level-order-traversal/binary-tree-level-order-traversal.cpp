@@ -12,33 +12,22 @@
 class Solution 
 {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root)
+    vector<vector<int>> result;
+    
+    void dfs(TreeNode* node, int level) 
     {
-        if (!root) 
-            return {}; // If tree is empty, return empty vector
-
-        vector<vector<int>> result;
-        queue<TreeNode*> q;
-        q.push(root);
-
-        while (!q.empty())
-        {
-            int levelSize = q.size();
-            vector<int> level;
-
-            for (int i = 0; i < levelSize; i++) 
-            {
-                TreeNode* node = q.front();
-                q.pop();
-                level.push_back(node->val);
-
-                if (node->left)
-                    q.push(node->left);
-                if (node->right)
-                    q.push(node->right);
-            }
-            result.push_back(level);
-        }
+        if (!node) return;
+        
+        if (result.size() == level) result.push_back({});
+            result[level].push_back(node->val);
+        
+        dfs(node->left, level + 1);
+        dfs(node->right, level + 1);
+    }
+    
+    vector<vector<int>> levelOrder(TreeNode* root) 
+    {
+        dfs(root, 0);
         return result;
     }
 };
