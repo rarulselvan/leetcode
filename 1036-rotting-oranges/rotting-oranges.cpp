@@ -54,37 +54,50 @@ public:
 class Solution 
 {
 public:
-    int orangesRotting(vector<vector<int>>& grid) {
+    int orangesRotting(vector<vector<int>>& grid)
+    {
         queue<pair<int, int>> rotten;
         int fresh = 0, time = 0;
 
         int rows = grid.size(), cols = grid[0].size();
 
         // Step 1: Count fresh oranges & enqueue all rotten oranges
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                if (grid[r][c] == 1) fresh++;
-                else if (grid[r][c] == 2) rotten.push({r, c});
+        for (int r = 0; r < rows; r++) 
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                if (grid[r][c] == 1) 
+                    fresh++;
+                else if (grid[r][c] == 2)
+                    rotten.push({r, c});
             }
         }
 
-        if (fresh == 0) return 0;  // No fresh oranges -> return 0 immediately
-        if (rotten.empty()) return -1;  // No rotten oranges to spread infection
+        if (fresh == 0)
+            return 0;  // No fresh oranges -> return 0 immediately
+        if (rotten.empty()) 
+            return -1;  // No rotten oranges to spread infection
 
         vector<pair<int, int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         // Step 2: BFS to spread rot
-        while (!rotten.empty()) {
+        while (!rotten.empty()) 
+        {
             int length = rotten.size();
             bool anyRotten = false;
 
-            for (int i = 0; i < length; i++) {
+            for (int i = 0; i < length; i++)
+            {
                 auto [r, c] = rotten.front();
                 rotten.pop();
 
-                for (const auto& dir : directions) {
+                for (const auto& dir : directions) 
+                {
                     int row = r + dir.first, col = c + dir.second;
-                    if (row >= 0 && row < rows && col >= 0 && col < cols && grid[row][col] == 1) {
+                    if (row >= 0 && row < grid.size() &&  //boundary check
+                        col >= 0 && col < grid[0].size() && //boundary check
+                        grid[row][col] == 1) // fresh orange 
+                    {
                         grid[row][col] = 2;
                         rotten.push({row, col});
                         fresh--;
@@ -93,7 +106,8 @@ public:
                 }
             }
 
-            if (anyRotten) time++;  // Increase time only if at least one orange rotted
+            if (anyRotten) 
+                time++;  // Increase time only if at least one orange rotted
         }
 
         return fresh == 0 ? time : -1;
