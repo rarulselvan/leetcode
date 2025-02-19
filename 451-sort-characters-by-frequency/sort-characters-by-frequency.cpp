@@ -21,9 +21,8 @@ public:
         string ans;
         for (auto x : myPair)
         {
-            cout << x.first << x.second<<" ";
             for(int i=0; i<x.first; i++)
-            ans.push_back(x.second); // Append character 'x.second' 'x.first' times
+                ans.push_back(x.second); // Append character 'x.second' 'x.first' times
         }
         
         return ans;
