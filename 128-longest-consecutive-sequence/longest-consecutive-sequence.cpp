@@ -4,8 +4,9 @@ public:
     {
         if (nums.empty())
             return 0;
-    
-        unordered_set<int> s(nums.begin(), nums.end()); // Store all unique elements in a set
+            
+        //Remove the duplicates...
+        unordered_set<int> s(nums.begin(), nums.end());
         int longestStreak = 0;
 
         for (int num : s) 
