@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
 public:
         string getHash(string &s) 
         {
@@ -37,5 +37,27 @@ public:
                 res[mp[key]].push_back(arr[i]);
         }
         return res;
+    }
+};*/
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> anagramGroups;
+
+        // Iterate through each word
+        for (string s : strs) {
+            string sortedStr = s;
+            sort(sortedStr.begin(), sortedStr.end()); // Sort the string
+            
+            anagramGroups[sortedStr].push_back(s); // Store the original word in the map
+        }
+
+        // Collect the grouped anagrams
+        vector<vector<string>> result;
+        for (auto& group : anagramGroups) {
+            result.push_back(group.second);
+        }
+
+        return result;
     }
 };
