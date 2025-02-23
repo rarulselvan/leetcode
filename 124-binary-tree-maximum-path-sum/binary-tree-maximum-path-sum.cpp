@@ -18,11 +18,13 @@ public:
         {
             if (!root)
                 return 0;
-
-            int left = max(0, dfs(root->left));
+            //max(0, dfs(...)) ensures that negative path sums are ignored (i.e., if a subtree has a negative contribution, we treat it as 0).
+            int left = max(0, dfs(root->left));//
             int right = max(0, dfs(root->right));
-            //Add 
+            //The maximum path sum passing through the current node is calculated as follows
+            //"left subtree"+ "right subtree" + "root value"
             ans = max(ans, left + right + root->val);
+            //However, this function has to return to the caller...
             return root->val + max(left, right);
         };
         dfs(root);
