@@ -6,7 +6,7 @@ public:
             return 0;
             
         //Remove the duplicates...
-        unordered_set<int> s(nums.begin(), nums.end());
+        set<int> s(nums.begin(), nums.end());
         int longestStreak = 0;
 
         for (int num : s) 
