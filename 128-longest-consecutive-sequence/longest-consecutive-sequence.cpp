@@ -13,7 +13,7 @@ public:
 
         for(auto num: st)
         {
-            if(!st.count(num-1))
+            if(st.count(num-1)==0)
             {
                 int currentNum = num;
                 int currentStreak = 1;
