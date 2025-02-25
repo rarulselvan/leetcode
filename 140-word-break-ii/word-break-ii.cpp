@@ -17,6 +17,7 @@ public:
         if (start == s.length())
         {
             result.push_back("");
+            //result.clear();
             return result;
         }
 
@@ -39,9 +40,6 @@ public:
                     else 
                         result.push_back(word + " " + sub);
                 }
-                for(auto x: result)
-                    cout <<x<<" ";
-                cout <<endl;
             }
         }
 
