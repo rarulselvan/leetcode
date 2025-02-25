@@ -46,7 +46,7 @@ public:
         }
 
         // Memorize the result for the current index
-       // dp[start] = result;
+        dp[start] = result;
         return result;
     }
 
