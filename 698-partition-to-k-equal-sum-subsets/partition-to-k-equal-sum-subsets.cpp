@@ -13,24 +13,24 @@ public:
 
         function<bool(int)> dfs = [&](int index)
         {
-            //Reached the end of array ?
+            //Reached the end of array ? break here 
             if (index == nums.size())
                 return true;
 
+            // the for loop is for the 'k' baskets or sets
             for (int j = 0; j < k; ++j) 
             {
                 if (subsetSums[j] + nums[index] > targetSum) 
-                    continue;// try the next number(expecting smaller than the current number)
-                //if (j > 0 && subsetSums[j] == subsetSums[j - 1]) 
-                  //  continue; // Avoid redundant states
+                    continue;// this basket is full attempt the next basket
 
                 subsetSums[j] += nums[index];
                 if (dfs(index + 1))
                     return true;
+
                 subsetSums[j] -= nums[index];
 
                 if (subsetSums[j] == 0) 
-                    break; // If we placed in an empty subset and failed, no need to try others.
+                    break; // Unable to place and element hence ..helpless return
             }
             return false;
         };
