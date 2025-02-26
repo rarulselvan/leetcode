@@ -5,7 +5,8 @@ public:
     {
         int total_gas = 0, total_cost = 0, tank = 0, start_index = 0;
         
-        for (int i = 0; i < gas.size(); i++) {
+        for (int i = 0; i < gas.size(); i++)
+         {
             total_gas += gas[i];
             total_cost += cost[i];
             tank += gas[i] - cost[i];
