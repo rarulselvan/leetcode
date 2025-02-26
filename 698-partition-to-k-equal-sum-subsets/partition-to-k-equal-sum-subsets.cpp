@@ -11,22 +11,28 @@ public:
         
         vector<int> subsetSums(k, 0);
 
-        std::function<bool(int)> dfs = [&](int index) {
-            if (index == nums.size()) return true;
+        function<bool(int)> dfs = [&](int index)
+        {
+            //Reached the end of array ?
+            if (index == nums.size())
+                return true;
 
-            for (int j = 0; j < k; ++j) {
-                if (subsetSums[j] + nums[index] > targetSum) continue;
-                if (j > 0 && subsetSums[j] == subsetSums[j - 1]) continue; // Avoid redundant states
+            for (int j = 0; j < k; ++j) 
+            {
+                if (subsetSums[j] + nums[index] > targetSum) 
+                    continue;// try the next number(expecting smaller than the current number)
+                //if (j > 0 && subsetSums[j] == subsetSums[j - 1]) 
+                  //  continue; // Avoid redundant states
 
                 subsetSums[j] += nums[index];
                 if (dfs(index + 1)) return true;
-                subsetSums[j] -= nums[index];
+                    subsetSums[j] -= nums[index];
 
-                if (subsetSums[j] == 0) break; // If we placed in an empty subset and failed, no need to try others.
+                if (subsetSums[j] == 0) 
+                    break; // If we placed in an empty subset and failed, no need to try others.
             }
             return false;
         };
-
         return dfs(0);
     }
 };
