@@ -25,8 +25,9 @@ public:
                   //  continue; // Avoid redundant states
 
                 subsetSums[j] += nums[index];
-                if (dfs(index + 1)) return true;
-                    subsetSums[j] -= nums[index];
+                if (dfs(index + 1))
+                    return true;
+                subsetSums[j] -= nums[index];
 
                 if (subsetSums[j] == 0) 
                     break; // If we placed in an empty subset and failed, no need to try others.
