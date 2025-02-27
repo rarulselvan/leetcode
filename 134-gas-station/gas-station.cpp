@@ -9,12 +9,12 @@ public:
          {
             total_gas += gas[i];
             total_cost += cost[i];
-            tank += gas[i] - cost[i];
+            tank = tank +(gas[i] - cost[i]);
             
             // If tank is negative, we cannot reach the next station
             if (tank < 0)
             {
-                // Which means if you start from this station you cannot reach the next station hence this station can't be the starting point
+                // Which means if you start from this station you cannot move forward hence this station can't be the starting point
                 start_index = i + 1;  // Set next station as the new start
                 tank = 0;  // Reset tank
             }
