@@ -13,14 +13,18 @@ private:
     bool dfs(const string& s, const unordered_set<string>& wordSet, int index) 
     {
         if (index == s.length()) return true; // Successfully segmented the entire string
-        if (dp.find(index) != dp.end()) return dp[index]; // Memoization check
+        if (dp.find(index) != dp.end())
+        {
+            cout << index<<" "<<dp[index]<<endl;
+            return dp[index]; // Memoization check
+        }
 
         for (int len = 1; index + len <= s.length(); len++)
         {
             string sub = s.substr(index, len);
-            if (wordSet.count(sub) )
+            if (wordSet.count(sub)) 
             {
-                if( dfs(s, wordSet, index + len))
+                if(dfs(s, wordSet, index + len))
                     return dp[index] = true; // Store result in dp and return
             }
         }
