@@ -15,10 +15,13 @@ private:
         if (index == s.length()) return true; // Successfully segmented the entire string
         if (dp.find(index) != dp.end()) return dp[index]; // Memoization check
 
-        for (int len = 1; index + len <= s.length(); ++len) {
+        for (int len = 1; index + len <= s.length(); len++)
+        {
             string sub = s.substr(index, len);
-            if (wordSet.count(sub) && dfs(s, wordSet, index + len)) {
-                return dp[index] = true; // Store result in dp and return
+            if (wordSet.count(sub) )
+            {
+                if( dfs(s, wordSet, index + len))
+                    return dp[index] = true; // Store result in dp and return
             }
         }
 
