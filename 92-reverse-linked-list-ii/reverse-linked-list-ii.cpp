@@ -10,6 +10,7 @@
  */
 class Solution 
 {
+      ListNode* successor = nullptr; // To store the (n+1)th node
 public:
     ListNode* reverseBetween(ListNode* head, int left, int right) 
     {
@@ -22,17 +23,16 @@ public:
 
         return head;
     }
-    ListNode* reverseN(ListNode *head, int n)
-    {
-        if (n == 1) //only one node return the node
+   ListNode* reverseN(ListNode* head, int n) {
+        if (n == 1) { // Base case: Stop at nth node
+            successor = head->next; // Store (n+1)th node
             return head;
+        }
 
         ListNode* newHead = reverseN(head->next, n - 1);
-
-        struct ListNode* headNext = head->next;
-        head->next = headNext->next;
-        headNext->next = head;
-
+        
+        head->next->next = head;
+        head->next = successor; // Connect the last node of reversed part to remaining list
         return newHead;
     }
 };
