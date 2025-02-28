@@ -33,7 +33,7 @@ public:
         ListNode* newHead = reverseN(head->next, n - 1);
         
         head->next->next = head;
-        head->next = successor; // Connect the last node of reversed part to remaining list
+        head->next = successor; // Connect the last node of reversed part to remaining list...this will go all the to the original recursive caller
         return newHead;
     }
 };
