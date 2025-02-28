@@ -24,7 +24,8 @@ public:
         return head;
     }
    ListNode* reverseN(ListNode* head, int n) {
-        if (n == 1) { // Base case: Stop at nth node
+        if (n == 1) 
+        { // Base case: Stop at nth node
             successor = head->next; // Store (n+1)th node
             return head;
         }
