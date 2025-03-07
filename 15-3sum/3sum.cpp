@@ -13,6 +13,7 @@ public:
                 if(nums[i] == nums[i - 1])
                    continue;
             }
+            cout<<" i="<<i<<endl;
             int left = i + 1, right = n - 1;
             while (left < right) 
             {
@@ -33,9 +34,9 @@ public:
         }
         sort(ans.begin(), ans.end());
         // Remove consecutive duplicate elements
-       auto it = unique(ans.begin(), ans.end());
+        auto it = unique(ans.begin(), ans.end());
         // Erase the duplicate vectors
-      ans.erase(it, ans.end());
+        ans.erase(it, ans.end());
         return ans;
     }
 };
