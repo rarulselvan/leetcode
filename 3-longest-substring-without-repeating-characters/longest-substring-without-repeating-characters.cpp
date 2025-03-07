@@ -41,7 +41,7 @@ public:
         int start = 0;
         int maxLength = 0;
 
-        for (int end = 0; end < s.size(); ++end) 
+        for (int end = 0; end < s.size(); end++) 
         {
             // If the character at the current ending index of the substring already exists
             // in the character set, continue to remove characters from the start of the
@@ -51,13 +51,18 @@ public:
                 slidingSet.erase(s[start]);
                 start += 1;
             }
+            //start=0;
 
             // Insert the current character into the set.
             slidingSet.insert(s[end]);
 
             // Calculate the length of the current substring and update maxLength
             // if this length is the largest we've found so far.
-            maxLength = max(maxLength, end - start + 1);
+            //maxLength = max(maxLength, end - start + 1);
+            int currLength=slidingSet.size();
+            cout <<s[end]<<" "<<currLength<<" "<< maxLength<<"    ";
+
+            maxLength = max(maxLength, currLength);
         }
         // Return the length of the longest substring found.
         return maxLength;
