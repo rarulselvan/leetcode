@@ -1,13 +1,17 @@
-class Solution {
+class Solution 
+{
 public:
-    bool canPartitionKSubsets(std::vector<int>& nums, int k) {
-        int totalSum = std::accumulate(nums.begin(), nums.end(), 0);
-        if (totalSum % k != 0) return false;
+    bool canPartitionKSubsets(std::vector<int>& nums, int k)
+    {
+        int totalSum = accumulate(nums.begin(), nums.end(), 0); //'0'- is the initials value
+        if (totalSum % k != 0) 
+            return false;//not possible
 
         int targetSum = totalSum / k;
         sort(nums.rbegin(), nums.rend());
         
-        if (nums[0] > targetSum) return false; // Early termination
+        //if (nums[0] > targetSum)
+           // return false; // Early termination
         
         vector<int> subsetSums(k, 0);
 
