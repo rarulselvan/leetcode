@@ -1,4 +1,4 @@
-/*class Solution {
+class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) 
     {
@@ -15,7 +15,7 @@ public:
         return i;
     }
 };
-*/
+/*
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) 
@@ -32,4 +32,4 @@ public:
         }
         return i;
     }
-};
+};*/
