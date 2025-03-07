@@ -10,9 +10,6 @@ public:
         int targetSum = totalSum / k;
         sort(nums.rbegin(), nums.rend());
         
-        //if (nums[0] > targetSum)
-           // return false; // Early termination
-        
         vector<int> subsetSums(k, 0);
 
         function<bool(int)> dfs = [&](int index)
