@@ -1,3 +1,4 @@
+
 /*class Solution {
 public:
     string minWindow(string s, string t)
@@ -50,13 +51,13 @@ class Solution
 {
 public:
     string minWindow(string s, string t) 
-    {
-        //if (s.empty() || t.empty()) return "";
-        
-        unordered_map<char, int> tFreq, windowFreq;
+    {        
+        unordered_map<char, int> tFreq;
+        unordered_map<char, int> windowFreq;
         
         // Count the frequency of characters in t
-        for (char c : t) tFreq[c]++;
+        for (char c : t) 
+            tFreq[c]++;
         
         int required = tFreq.size();  // Number of unique characters needed
         int formed = 0;               // Number of unique chars matched in the window
@@ -64,12 +65,13 @@ public:
         int left = 0, right = 0;
         int minLen = INT_MAX, startIdx = 0;
         
-        while (right < s.length()) {
+        while (right < s.length()) 
+        {
             char c = s[right];
             windowFreq[c]++;
             
             // If this character is part of `t` and count matches
-            if (tFreq.count(c) && windowFreq[c] == tFreq[c])
+            if ( windowFreq[c] == tFreq[c])
                 formed++;
             
             // Try to contract the window
