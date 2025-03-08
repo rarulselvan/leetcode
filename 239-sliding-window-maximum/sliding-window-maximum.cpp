@@ -1,27 +1,3 @@
-/*class Solution
-{
-public:
-
-    vector < int > maxSlidingWindow(vector < int > & nums, int k)
-    {
-        deque < int > dq;
-        vector < int > ans;
-        for (int i = 0; i < nums.size(); i++) 
-        {
-            if (dq.front() == i - k) 
-                dq.pop_front();
-
-            while (!dq.empty() && nums[dq.back()] < nums[i])
-            dq.pop_back();
-
-            dq.push_back(i);
-            if (i >= k - 1)
-                ans.push_back(nums[dq.front()]);
-        }
-        return ans;
-    }
-};*/
-
 class Solution 
 {
 public:
@@ -32,11 +8,10 @@ public:
 
         for (int i = 0; i < nums.size(); ++i) 
         {
-    
-            if ( windowIndices.front()==i-k)
+            if( windowIndices.front()==i-k)
                 windowIndices.pop_front();        // Remove indices of elements not in the current window
             
-            // Maintain the elements in decreasing order in the deque
+            // Maintain the elements in decreasing order in the deque, maximum value will be there in the front 
             // Pop elements from the back that are less than or equal to the current element
             while (!windowIndices.empty() && nums[windowIndices.back()] <= nums[i]) 
                 windowIndices.pop_back();
@@ -45,8 +20,11 @@ public:
             windowIndices.push_back(i);
           
             // If we've reached the end of the first window, record the max for the current window
-            if (i >= k - 1)
+            if (i >= k-1 )
+            {
+                cout <<i<<" "<<k<<endl;
                 ans.push_back(nums[windowIndices.front()]);
+            }
         }
       
         return ans;  // Return the list of maximum values
