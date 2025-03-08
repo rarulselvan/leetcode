@@ -80,7 +80,8 @@ public:
                     char leftChar = s[left];
 
                     // Update the smallest window found
-                    if (right - left + 1 < minLen) {
+                    if (right - left + 1 < minLen) 
+                    {
                         minLen = right - left + 1;
                         startIdx = left;
                     }
