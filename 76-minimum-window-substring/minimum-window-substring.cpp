@@ -71,26 +71,27 @@ public:
             windowFreq[c]++;
             
             // If this character is part of `t` and count matches
-            if ( windowFreq[c] == tFreq[c])
+            if (windowFreq[c] == tFreq[c])
                 formed++;
             
-            // Try to contract the window
-            while (left <= right && formed == required) {
-                char leftChar = s[left];
+                // slide the window
+                while (formed == required && left <= right)
+                {
+                    char leftChar = s[left];
 
-                // Update the smallest window found
-                if (right - left + 1 < minLen) {
-                    minLen = right - left + 1;
-                    startIdx = left;
+                    // Update the smallest window found
+                    if (right - left + 1 < minLen) {
+                        minLen = right - left + 1;
+                        startIdx = left;
+                    }
+
+                    // Remove from the window
+                    windowFreq[leftChar]--;
+                    if (tFreq.count(leftChar) && windowFreq[leftChar] < tFreq[leftChar])
+                        formed--;
+
+                    left++;  // Shrink window
                 }
-
-                // Remove from the window
-                windowFreq[leftChar]--;
-                if (tFreq.count(leftChar) && windowFreq[leftChar] < tFreq[leftChar])
-                    formed--;
-
-                left++;  // Shrink window
-            }
 
             right++;  // Expand window
         }
