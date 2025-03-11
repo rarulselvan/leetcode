@@ -1,30 +1,32 @@
-/*class Solution 
+class Solution 
 {
 public:
     int largestRectangleArea(vector<int>& heights) 
     {
-        stack<int> st;  // Monotonic increasing stack
-        int maxArea = 0;
-        heights.push_back(0);  // Sentinel to process remaining bar
-
-        for (int i = 0; i < heights.size(); i++) 
-        {
-            while (!st.empty() && heights[st.top()] > heights[i]) 
-            {
-                int height = heights[st.top()];
-                cout <<"pop()"<<height<<endl;
-                st.pop();
-                int width = st.empty() ? i : i - st.top() - 1;
-                maxArea = max(maxArea, height * width);
+        stack<int> stk;
+        stk.push(-1);
+        int max_area = 0;
+        for (size_t i = 0; i < heights.size(); i++) {
+            while (stk.top() != -1 and heights[stk.top()] >= heights[i]) {
+                int current_height = heights[stk.top()];
+                stk.pop();
+                int current_width = i - stk.top() - 1;
+                max_area = max(max_area, current_height * current_width);
             }
-            cout<<"push "<<heights[i]<<" "<<i<<endl;
-            st.push(i);
+            stk.push(i);
         }
-        return maxArea;
+        while (stk.top() != -1 )
+        {
+            int current_height = heights[stk.top()];
+            stk.pop();
+            int current_width = heights.size() - stk.top() - 1;
+            max_area = max(max_area, current_height * current_width);
+        }
+
+        return max_area;
     }
 };
-*/
-class Solution {
+/*lass Solution {
 public:
     int largestRectangleArea(std::vector<int>& heights) {
         int numBars = heights.size();
@@ -39,11 +41,12 @@ public:
                 stack.pop();
                 int w = stack.empty() ? i : i - stack.top() - 1;
                 maxArea = std::max(maxArea, h * w);
+                cout <<maxArea<<endl;
             }
-            
+            cout <<"push "<<i<<endl;
             stack.push(i);
         }
         
         return maxArea;
     }
-};
+}; */
