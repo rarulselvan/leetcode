@@ -19,7 +19,7 @@ public:
             }
             for (int col = 0; col < n; col++) 
             {
-                if (colposition[col] + dgposition[row + col] + udgposition[n - row + col] == 0) 
+                if (colposition[col] ==0 && dgposition[row + col] ==0 && udgposition[n - row + col] == 0) 
                 {
                     t[row][col] = 'Q';
                     colposition[col] = dgposition[row + col] = udgposition[n - row + col] = 1;
