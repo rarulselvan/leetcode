@@ -9,23 +9,22 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution 
+{
 public:
     int maxPathSum(TreeNode* root) 
     {
         int ans = INT_MIN;
-        function<int(TreeNode*)> dfs = [&](TreeNode* root) 
+    
+        function<int (TreeNode*)> dfs=[&](TreeNode* root)
         {
-            if (!root)
+            if(root==NULL)
                 return 0;
-            //max(0, dfs(...)) ensures that negative path sums are ignored (i.e., if a subtree has a negative contribution, we treat it as 0).
-            int left = max(0, dfs(root->left));//
-            int right = max(0, dfs(root->right));
-            //The maximum path sum passing through the current node is calculated as follows
-            //"left subtree"+ "right subtree" + "root value"
-            ans = max(ans, left + right + root->val);
-            //However, this function has to return to the caller...
-            return root->val + max(left, right);
+            
+            int leftMax= max(0,dfs(root->left));
+            int rightMax= max(0,dfs(root->right));
+            ans=max(ans, root->val+leftMax+rightMax); //global calculation
+            return(max(leftMax, rightMax)+root->val); //this function return value...for the previous caller this function computes left and right subtree and picks the macimum out of it
         };
         dfs(root);
         return ans;
