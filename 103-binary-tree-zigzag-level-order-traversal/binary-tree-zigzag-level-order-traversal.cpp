@@ -12,28 +12,30 @@
 class Solution 
 {
 public:
-    vector<vector<int>> result;
-    
-    void dfs(TreeNode* node, int level) 
-    {
-        if (!node) return;
-        
-        if (result.size() == level)
-        {
-           result.push_back({});
-        }
-        if(level%2==0)
-            result[level].push_back(node->val);
-        else
-            result[level].insert(result[level].begin(), node->val);
+    vector<vector<int>> ans;
 
-        dfs(node->left, level + 1);
-        dfs(node->right, level + 1);
+    void dfs(TreeNode* root, int level) 
+    {
+        if(root)
+        {           
+            if (level == ans.size())
+            {
+                ans.push_back({});//crerate a row with zero elements
+            }
+
+            if(level%2==0)
+                ans[level].push_back(root->val);
+            else
+                ans[level].insert(ans[level].begin(), root->val);
+
+            dfs(root->left, level + 1);
+            dfs(root->right, level + 1);
+        }
     }
-        
+    
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) 
     {
         dfs(root, 0);
-        return result;
+        return ans;
     }
 };
