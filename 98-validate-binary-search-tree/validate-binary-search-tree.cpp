@@ -14,17 +14,19 @@ class Solution
 public:
     bool isBST(struct TreeNode* root,struct TreeNode* &prev)
     {
-       if (root)
+        if(root)
         {
-            if (!isBST(root->left, prev)) // Check left subtree
+            if(isBST(root->left, prev) ==false)
                 return false;
-
-            if (prev && prev->val >= root->val) // BST violation condition
-                return false;
+            if(prev)
+            {
+                if(prev->val >= root->val)
+                    return false;
+            }
+            prev=root;
             
-            prev = root; // Update prev after visiting node
-
-            return isBST(root->right, prev); // Check right subtree
+            if(isBST(root->right, prev)==false)
+                return false;
         }
         return true;
     }
