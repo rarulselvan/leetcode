@@ -1,26 +1,23 @@
-class Solution {
+class Solution 
+{
 public:
-    // Function to find the number of days to wait for a warmer temperature for each day
-    vector<int> dailyTemperatures(vector<int>& temperatures) {
-        int n = temperatures.size(); // Number of days based on the temperature list
-        vector<int> daysToWait(n); // Initialize the answer array with the same size as temperatures
-        stack<int> indexStack; // Stack to keep track of temperatures indices
+    vector<int> dailyTemperatures(vector<int>& temperatures) 
+    {
+        int n = temperatures.size(); 
+        vector<int> daysToWait(n); 
+        stack<int> stackIndex;
 
-        // Iterate over each day in temperatures
-        for (int i = 0; i < n; ++i) {
-            // Check if the current day's temperature is higher than the temperature at the 
-            // top of the stack (which represents the last unprocessed day's temperature)
-            while (!indexStack.empty() && temperatures[indexStack.top()] < temperatures[i]) {
-                int previousDayIndex = indexStack.top(); // Get the index of the day with the lower temperature
+        for (int i = 0; i < n; i++) 
+        {
+            // Check if the current day's temperature is higher than the temperature at the top of the stack
+            while (!stackIndex.empty() &&  temperatures[i] >temperatures[stackIndex.top()]) 
+            {
+                int previousDayIndex = stackIndex.top(); // Get the index of the day with the lower temperature
                 daysToWait[previousDayIndex] = i - previousDayIndex; // Calculate the days to wait
-                indexStack.pop(); // Remove that day from the stack since it's now processed
-            }
-          
-            // Always push the current day's index to the stack to process later
-            indexStack.push(i);
+                stackIndex.pop(); // Remove that day from the stack since it's now processed
+            } 
+            stackIndex.push(i);
         }
-      
-        // The stack will automatically contain 0s where there is no warmer temperature in the future
         return daysToWait;
     }
 };
