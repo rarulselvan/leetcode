@@ -81,11 +81,12 @@ public:
         vector<pair<int, int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
         // Step 2: BFS to spread rot
-        while (!rotten.empty()) 
+        while (rotten.size()>0) 
         {
             int length = rotten.size();
             bool anyRotten = false;
 
+            //The queue is processed...this for loop adds a new elements into the queue 
             for (int i = 0; i < length; i++)
             {
                 auto [r, c] = rotten.front();
@@ -105,11 +106,12 @@ public:
                     }
                 }
             }
-
-            if (anyRotten) 
+//if (anyRotten) 
                 time++;  // Increase time only if at least one orange rotted
         }
-
-        return fresh == 0 ? time : -1;
+        if(fresh) 
+            return -1; // Not all oranges can be rotten
+        else 
+            return --time; // All oranges are rotten, return total time taken
     }
 };
