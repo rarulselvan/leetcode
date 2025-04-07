@@ -28,7 +28,8 @@ public:
     {
         if (!node)
             return NULL;
-        if (visited.count(node)) 
+        //if (visited.count(node)) 
+        if (visited[node]) 
         {   
             //Avoid the cylcic loop...else will go indefinetely
             return visited[node]; // this will be added as a neighbor..no need to create a new one
