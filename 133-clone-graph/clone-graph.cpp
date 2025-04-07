@@ -31,7 +31,7 @@ public:
         if (visited.count(node)) 
         {   
             //Avoid the cylcic loop...else will go indefinetely
-            return visited[node];
+            return visited[node]; // this will be added as a neighbor..no need to create a new one
         }
 
         Node* clone = new Node(node->val);
