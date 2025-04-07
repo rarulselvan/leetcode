@@ -23,7 +23,7 @@ public:
             // direction vector to move in 4 directions
             vector<vector<int>> dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-            for (auto d : dir) 
+            for (vector<int> d : dir) 
             {
                 int x = row + d[0], y = col + d[1];
 
@@ -35,7 +35,6 @@ public:
                     ans = max(ans, 1 + dfs(x, y));
                 }
             }
-
             // Memoize the answer and return it.
             return dp[row][col] = ans;
         };
