@@ -12,12 +12,12 @@ public:
         if (dp[i][sum]!=-1) 
             return dp[i][sum];
 
-        int take = -1;
+        int take = 0;
 
         //Include the coin hence (sum-coin) try with the same coin
         take = minCoinsRecur(coins, sum-coins[i], i,dp);
         if (take != INT_MAX) 
-            take++;
+            take++;// the coin is inlcuded hence 1 is added
         
         // Exclude the coin (hence send the sum as it is) and try with next coin (i+1)
         int noTake = minCoinsRecur(coins,sum, i+1, dp);
