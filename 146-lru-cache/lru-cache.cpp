@@ -28,7 +28,7 @@ private:
 
     void addToHead(Node* node)
     {
-        if(head!=node)
+       // if(head!=node)
         {
             node->next = head->next;
             node->prev = head;
@@ -55,6 +55,7 @@ public:
         }
         Node* node = cache[key];
         removeNode(node);
+        if(head !=node)
         addToHead(node);
         return node->val;
     }
