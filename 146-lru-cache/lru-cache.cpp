@@ -55,7 +55,7 @@ public:
         }
         Node* node = cache[key];
         removeNode(node);
-        if(head !=node)
+       // if(head !=node)
         addToHead(node);
         return node->val;
     }
