@@ -10,6 +10,7 @@ public:
         {
             int area = min(height[left],height[right]) * (right - left);
             maxArea = max(area, maxArea);
+            
             if (height[left] < height[right])
                 left++;
             else 
