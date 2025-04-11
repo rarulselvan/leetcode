@@ -9,8 +9,9 @@ public:
         while(count>0)
         {
             result=result<<1;
+
             if(n&1)
-                result=result^1;
+                result=result|1;
             n=n>>1;
             count--;
         }
