@@ -1,8 +1,8 @@
 class Solution 
 {
-
+    
 public:
-    // Function to find all the start indices of p's anagrams in s.
+    // This is a fixed window sliding problem....
     vector<int> findAnagrams(string s, string p)
     {
         int sLen    = s.size();
@@ -36,7 +36,7 @@ public:
                 startingIndices.push_back(i - patLen + 1);
             
             // Move the window forward by one: decrease the count of the character leaving the window.
-            --windowCharCount[s[i - patLen + 1] ];
+            windowCharCount[s[i - patLen + 1]]--;
         }
         return startingIndices; // Return the collected starting indices of anagrams.
     }
