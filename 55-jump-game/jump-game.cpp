@@ -31,9 +31,9 @@ public:
     bool canJump(vector<int>& nums) 
     {
         int mx = 0;
-        for (int i = 0; i < nums.size(); ++i) 
+        for (int i = 0; i < nums.size(); i++) //TRy every index
         {
-            if (mx < i) 
+            if (mx < i)  //if maximum reachable is less than the current then not possible
                 return false;
             mx = max(mx, i + nums[i]);
         }
