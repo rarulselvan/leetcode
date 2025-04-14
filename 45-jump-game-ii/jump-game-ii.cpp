@@ -21,14 +21,14 @@ public:
 
         for (int i = 1; i <= nums[start]; i++)  // Fix: Correct loop condition
         {
-            if(start + i > end)
-                break; // array boundary check
+           // if(start + i > end)
+               // break; // array boundary check
 
             int minJumps = jumpDP(nums, start + i, end);
             if (minJumps != INT_MAX) // Fix: Prevent overflow when adding 1
                 result = min(result, 1 + minJumps);
         }
-        // at times nums[start] is zero INT_MAX will be returned
+        // at times nums[start] is zero "INT_MAX" will be returned
         dp[start] = result;
         return result;
     }
