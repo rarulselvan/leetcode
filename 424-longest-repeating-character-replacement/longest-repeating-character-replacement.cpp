@@ -20,8 +20,8 @@ public:
                 charCount[s[left]]--;
                 left++;
             }
-            else
-            maxLen = max(maxLen, right - left + 1);
+            else//calculate the max length on cases no need to shrink the window
+                maxLen = max(maxLen, right - left + 1);
         }
         return maxLen;
     }
