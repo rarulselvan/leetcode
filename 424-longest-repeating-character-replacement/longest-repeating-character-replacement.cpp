@@ -1,31 +1,30 @@
-class Solution {
+class Solution 
+{
 public:
-    int characterReplacement(string s, int k)
+    int characterReplacement(string s, int k) 
     {
-        int res = 0, n = s.size();
-        
-        // Try replacing other characters to form 
-        // a string of each character 'A' to 'Z'
-        for (char c = 'A'; c <= 'Z'; c++)
+        vector<int> charCount(256, 0);
+        int left = 0;
+        int right = 0;
+        int maxCharCount = 0;
+      
+        for (right = 0; right <s.size(); right++)
         {
-            int l = 0, r = 0, cnt = 0;
-            
-            // Sliding window from l to r
-            while (r < n)
-            {
-                if (s[r] == c)
-                    r++;
-                else if (cnt < k)
-                    r++, cnt++;
-                else if (s[l] == c)
-                    l++;
-                else
-                    l++, cnt--;
-                
-                // Update the maximum length of substring
-                res = max(res, r - l);
+            charCount[s[right]]++; // Increment the count for the current character
+
+            // Update the max frequency character count seen so far in the current window
+            maxCharCount = max(maxCharCount, charCount[s[right]]);
+          
+            // Check if the current window size minus the count of the max frequency character
+            // is greater than k, if so, shrink the window from the left
+            if (right - left + 1 - maxCharCount > k)
+             {
+                charCount[s[left]]--; // Decrement the count for the character at the left index as it's going out of the window
+                left++; // Shrink the window from the left
             }
         }
-        return res;
+
+        // The length of the largest window compliant with the condition serves as the answer
+        return right - left;
     }
 };
