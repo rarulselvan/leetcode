@@ -43,7 +43,8 @@ public:
 
                 // If the adjacent cell has not been visited and we can move there,
                 // we move, clean the cell, and backtrack after
-                if (visited.count({x, y}) == 0 && robot.move()) {
+                if (visited.count({x, y}) == 0 && robot.move()) 
+                {
                     dfs(x, y, newDir);
 
                     // Backtrack to the previous cell (requires two turns and move)
@@ -54,7 +55,7 @@ public:
                     robot.turnLeft();
                 }
                 // Turn the robot to face the next direction
-                robot.turnRight();
+                robot.turnLeft();
             }
         };
 
