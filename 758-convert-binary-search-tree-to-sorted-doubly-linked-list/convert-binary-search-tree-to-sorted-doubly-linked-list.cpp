@@ -22,12 +22,11 @@ public:
 };
 */
 
-class Solution {
-
+class Solution 
+{
 private :
-        Node* prevNode;
+    Node* prevNode;
     Node* listHead;
-
 public:
     
         Node* treeToDoublyList(Node* root)
@@ -48,27 +47,27 @@ public:
             return listHead;    // Return the head of the doubly linked list.
          }
 
-    // Helper DFS function to perform in-order traversal.
-    void DFSInOrder(Node* currentNode) {
-        if (!currentNode) return;  // Base case: if the current node is null, just return.
+    void DFSInOrder(Node* root) 
+    {
+        if (!root)
+            return;
 
         // Traverse the left subtree first (in-order traversal).
-        DFSInOrder(currentNode->left);
+        DFSInOrder(root->left);
 
         // When processing the current node:
-        if (prevNode) {
+        if (prevNode) 
+        {
             // If prevNode is not null, link it with the current node.
-            prevNode->right = currentNode;
-            currentNode->left = prevNode;
-        } else {
-            // If this is the leftmost node, it will be the head of the doubly linked list.
-            listHead = currentNode;
-        }
+            prevNode->right = root;
+            root->left = prevNode;
+        } 
+        else 
+           listHead = root;    // If this is the leftmost node, it will be the head of the doubly linked list.
       
-        // Move prevNode to the current node before traversing the right subtree.
-        prevNode = currentNode;
+        prevNode = root;
 
         // Traverse the right subtree.
-        DFSInOrder(currentNode->right);
+        DFSInOrder(root->right);
     }
 };
