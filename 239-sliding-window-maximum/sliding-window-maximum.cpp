@@ -1,3 +1,4 @@
+
 class Solution 
 {
 public:
@@ -26,7 +27,7 @@ public:
                 ans.push_back(nums[windowIndices.front()]);
             }
         }
-      
+    
         return ans;  // Return the list of maximum values
     }
 };
