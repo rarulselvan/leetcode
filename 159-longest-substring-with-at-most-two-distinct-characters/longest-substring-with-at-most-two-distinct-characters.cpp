@@ -1,6 +1,7 @@
-class Solution {
+class Solution
+{
 public:
-    int lengthOfLongestSubstringTwoDistinct(std::string s) 
+    int lengthOfLongestSubstringTwoDistinct(string s) 
     {
         unordered_map<char, int> charFrequency;
         int len = s.size();                  
