@@ -20,7 +20,7 @@ public:
                 if (charFrequency[s[left]] == 0) // is required to remove key-value pairs when the frequency of a key reaches zero, even if the value is still present in the map.
                    charFrequency.erase(s[left]);
                 
-                ++left;
+                left++;
             }
 
             // Calculate the current length of the substring and update the max length
