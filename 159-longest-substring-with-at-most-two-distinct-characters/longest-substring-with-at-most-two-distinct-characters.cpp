@@ -12,19 +12,19 @@ public:
         {
             charFrequency[s[right]]++;
 
-            // If our map has more than two distinct characters, shrink the window from the left
             while (charFrequency.size() > 2) 
             {
-                charFrequency[s[left]]--; // Decrease the frequency of the leftmost character
-                if (charFrequency[s[left]] == 0) // If frequency is zero, remove it from the map
-                    charFrequency.erase(s[left]);
+                if(charFrequency[s[left]])
+                charFrequency[s[left]]--;
+                if (charFrequency[s[left]] == 0) // is required to remove key-value pairs when the frequency of a key reaches zero, even if the value is still present in the map.
+                   charFrequency.erase(s[left]);
                 
-                ++left; // Move the left boundary of the window to the right
+                ++left;
             }
 
             // Calculate the current length of the substring and update the max length
             maxLength = max(maxLength, right - left + 1);
         }
-        return maxLength; // Return the length of the longest substring with at most two distinct characters
+        return maxLength;
     }
 };
