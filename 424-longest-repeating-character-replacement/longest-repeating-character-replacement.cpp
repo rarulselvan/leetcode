@@ -3,7 +3,6 @@ class Solution
 public:
     int characterReplacement(string s, int k)
     {
-       // vector<int> charCount(256, 0); // For uppercase English letters (A-Z)
         unordered_map<char, int>charCount;
         int left = 0;
         int right = 0;
