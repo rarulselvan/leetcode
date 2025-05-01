@@ -3,7 +3,8 @@ class Solution
 public:
     int characterReplacement(string s, int k)
     {
-        vector<int> charCount(256, 0); // For uppercase English letters (A-Z)
+       // vector<int> charCount(256, 0); // For uppercase English letters (A-Z)
+        unordered_map<char, int>charCount;
         int left = 0;
         int right = 0;
         int maxLen = 0;
@@ -14,14 +15,15 @@ public:
             charCount[s[right]]++;
             maxCharCount = max(maxCharCount, charCount[s[right]]);
 
-            // Shrink if replacements needed exceed k
-            if (right - left + 1 - maxCharCount > k)
+            int windowsSize=right-left+1;
+            if (windowsSize - maxCharCount > k)//we can only replace k charactors to the max occured charactor in the window
             {
+                // Shrink if replacements needed exceed 'k'
                 charCount[s[left]]--;
                 left++;
             }
             else//calculate the max length on cases no need to shrink the window
-                maxLen = max(maxLen, right - left + 1);
+                maxLen = max(maxLen, windowsSize);
         }
         return maxLen;
     }
