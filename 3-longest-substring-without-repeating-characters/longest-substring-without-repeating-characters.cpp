@@ -43,19 +43,15 @@ public:
 
         for(right=0; right < s.length(); right++)
         {
-            // If character is repeated, move left pointer marking
-            // visited characters as false until the repeating 
-            // character is no longer part of the current window
-            while (Map[s[right]] == true) 
+            while (Map[s[right]])  //If the charactor is already available move the left pointer
             {
                 Map[s[left]]--;
                 left++;
             }
-
+            //Now add the charactor into map
             Map[s[right]]++;
 
-            // The length of the current window (right - left + 1)
-            // is calculated and answer is updated accordingly.
+            // The length of the current window (right - left + 1) is calculated and answer is updated accordingly.
             res = max(res, (right - left + 1));
         }
         return res;
