@@ -1,10 +1,8 @@
-class Solution 
+/*class Solution 
 {
 public:
     int lengthOfLongestSubstring(string s) 
     {
-        // This unordered set is used to store the characters that are currently in the
-        // longest substring without repeating characters.
         unordered_set<char> slidingSet;
 
         // The starting index of the substring.
@@ -30,5 +28,36 @@ public:
         }
         // Return the length of the longest substring found.
         return maxLength;
+    }
+};
+*/
+class Solution 
+{
+public:
+    int lengthOfLongestSubstring(string& s) 
+    {
+        int res = 0;
+        unordered_map<char, int>vis;
+        int left = 0; 
+        int right = 0;
+
+        for(right=0; right < s.length(); right++)
+        {
+            // If character is repeated, move left pointer marking
+            // visited characters as false until the repeating 
+            // character is no longer part of the current window
+            while (vis[s[right]] == true) 
+            {
+                vis[s[left]] = false;
+                left++;
+            }
+
+            vis[s[right]] = true;
+
+            // The length of the current window (right - left + 1)
+            // is calculated and answer is updated accordingly.
+            res = max(res, (right - left + 1));
+        }
+        return res;
     }
 };
