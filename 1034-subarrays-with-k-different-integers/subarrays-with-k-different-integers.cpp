@@ -10,9 +10,10 @@ private:
     int atMostKDistinct(const vector<int>& nums, int k) 
     {
         unordered_map<int, int> freq;
-        int left = 0, right = 0, count = 0;
+        int left = 0;
+        int right = 0;
+        int count = 0;
         
-        //while (right < nums.size()) 
         for(int right=0; right<nums.size();)
         {
             if (freq[nums[right]] == 0) 
