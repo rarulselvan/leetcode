@@ -16,7 +16,9 @@ public:
             oddCount += count % 2; // Count is odd if % 2 is 1
         }
 
-        // one oddcount  A string can be permuted to form a palindrome if there is at most one character with an odd count
-        return oddCount < 2;
+        if(oddCount<2)
+            return true;
+        else
+            return false;
     }
 };
