@@ -16,9 +16,11 @@ public:
             oddCount += count % 2; // Count is odd if % 2 is 1
         }
 
-        if(oddCount<2)
+        /*if(oddCount<2)
             return true;
         else
             return false;
+            */
+        return oddCount<2 ;
     }
 };
