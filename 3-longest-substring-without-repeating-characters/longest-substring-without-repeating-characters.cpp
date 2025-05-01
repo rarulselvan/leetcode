@@ -37,7 +37,7 @@ public:
     int lengthOfLongestSubstring(string& s) 
     {
         int res = 0;
-        unordered_map<char, int>vis;
+        unordered_map<char, int>Map;
         int left = 0; 
         int right = 0;
 
@@ -46,13 +46,13 @@ public:
             // If character is repeated, move left pointer marking
             // visited characters as false until the repeating 
             // character is no longer part of the current window
-            while (vis[s[right]] == true) 
+            while (Map[s[right]] == true) 
             {
-                vis[s[left]] = false;
+                Map[s[left]]--;
                 left++;
             }
 
-            vis[s[right]] = true;
+            Map[s[right]]++;
 
             // The length of the current window (right - left + 1)
             // is calculated and answer is updated accordingly.
