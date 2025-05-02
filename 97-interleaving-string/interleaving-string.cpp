@@ -22,7 +22,7 @@ public:
             if (dp[i][j] != -1)
                 return dp[i][j] == 1;
             
-            dp[i][j] = 0;
+           // dp[i][j] = 0;
 
             int k = i + j;
 
@@ -31,6 +31,9 @@ public:
             
             else if(j < n && s2[j] == s3[k] && dfs(i, j + 1)) 
                 dp[i][j] = 1;
+            else
+                        dp[i][j] = 0;
+
             
             return dp[i][j] == 1;
         };
