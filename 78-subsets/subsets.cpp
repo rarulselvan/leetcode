@@ -1,71 +1,26 @@
-/*class Solution
-{
-public:
-    void findSubsets(vector<int>& v, int idx,
-                 vector<int>& subset,
-                 set<vector<int> >& result)
-    {
-        // If the current subset is not empty
-        // insert it into the result
-        if (!subset.empty())
-            result.insert(subset);
-
-        // Iterate over every element in the array
-        for (int j = idx; j < v.size(); j++) {
-
-            // Pick the element and move ahead
-            subset.push_back(v[j]);
-            findSubsets(v, j + 1, subset, result);
-
-            // Backtrack to drop the element
-            subset.pop_back();
-        }
-    }
-
-// Function to return all unique subsets
-
-    vector<vector<int> > subsets(vector<int>& v) 
-    {
-        // To store the resulting subsets
-        set<vector<int> > result;
-        vector<int> subset;
-
-        // Helper function call
-        findSubsets(v, 0, subset, result);
-
-        vector<vector<int> > res;
-        res.push_back({});//insert the empty set
-        for (auto x : result)
-            res.push_back(x);
-
-        return res;
-    }
-}; */
 class Solution 
 {
-    vector<vector<int>> output;
 public:
-    void backtrack(int first, vector<int> curr, vector<int>& nums) 
-    {
-        // Add the current combination to the output
-        output.push_back(curr);
-        
-        // Explore further combinations
-        for (int i = first; i < nums.size(); ++i) 
-        {
-            // Add the next element to the current combination
-            curr.push_back(nums[i]);
-            // Recurse to form the next combination
-            backtrack(i + 1, curr, nums);
-            // Backtrack and remove the last element
-            cout<<"popping"<<nums[i]<<endl;
-            curr.pop_back();
-        }
-    }  
     vector<vector<int>> subsets(vector<int>& nums) 
     {
-        vector<int> curr;
-        backtrack(0, curr, nums); // Call once to generate all subsets
-        return output;
+        vector<vector<int>>ans;
+        vector<int>subAns;
+
+        function<void(int)>dfs;
+        dfs=[&](int start)
+        {
+            if (!subAns.empty())
+                ans.push_back(subAns);
+            
+            for(int j=start; j<nums.size(); j++)
+            {
+                subAns.push_back(nums[j]);
+                dfs(j+1);
+                subAns.pop_back();
+            }
+        };
+        ans.push_back(subAns);//empty set
+        dfs(0);
+        return ans;
     }
 };
