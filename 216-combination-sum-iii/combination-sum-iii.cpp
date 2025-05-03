@@ -1,29 +1,32 @@
-class Solution 
-{
+class Solution {
 public:
-    vector<vector<int>> combinationSum3(int k, int n) 
+    vector<vector<int>> combinationSum3(int k, int target)
     {
-        vector<vector<int>> ans;
-        vector<int> path;
-        function<void(int, int, int)> dfs;
-        dfs= [&](int i, int sum, int count) 
+        vector<vector<int>>ans;
+        vector<int>subAns;
+        function<void(int, int)>dfs;
+    
+        dfs=[&](int start, int sum)
         {
-            if (sum == 0 && count == k) 
+            if(sum<0)
+                return;
+            if(subAns.size()>k)
+                return;
+            if(sum==0 && subAns.size()==k)
             {
-                ans.push_back(path);
+                ans.push_back(subAns);
                 return;
             }
-            if (sum < 0 || count > k) 
-                return;
 
-            for (int j = i; j<= 9; j++) 
+            for(int j=start; j<=9; j++)
             {
-                path.push_back(j);
-                dfs(j + 1, sum - j, count + 1);
-                path.pop_back();
+
+                subAns.push_back(j);
+                dfs(j+1,sum-j);//same number chosen unlimited number of times.. so j is passed as it is
+                subAns.pop_back();
             }
         };
-        dfs(1, n, 0);
+        dfs(1, target);
         return ans;
     }
 };
