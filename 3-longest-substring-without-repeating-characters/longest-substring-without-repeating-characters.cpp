@@ -1,36 +1,29 @@
-/*class Solution 
+
+class Solution 
 {
 public:
-    int lengthOfLongestSubstring(string s) 
+    int lengthOfLongestSubstring(string& s) 
     {
-        unordered_set<char> slidingSet;
-
-        // The starting index of the substring.
-        int start = 0;
-        int maxLength = 0;
-
-        for (int end = 0; end < s.size(); end++) 
+        int len=0;
+        int left=0;
+        int right=0;
+        unordered_map<char, int>Map;
+        
+        for(right=0; right<s.size(); right++)
         {
-            // If the character at the current ending index of the substring already exists
-            // in the character set, continue to remove characters from the start of the
-            // substring until the character is no longer in the set.
-            while (slidingSet.count(s[end])) 
+            Map[s[right]]++;
+            while(Map[s[right]]>1)
             {
-                slidingSet.erase(s[start]);
-                start += 1;
+                Map[s[left]]--;
+                left++;
             }
-
-            // Insert the current character into the set.
-            slidingSet.insert(s[end]);
-
-            int currLength=slidingSet.size();
-            maxLength = max(maxLength, currLength);
+            len=max(len, right-left+1);
         }
-        // Return the length of the longest substring found.
-        return maxLength;
+        return len;
     }
 };
-*/
+
+/*
 class Solution 
 {
 public:
@@ -56,4 +49,4 @@ public:
         }
         return res;
     }
-};
+};*/
