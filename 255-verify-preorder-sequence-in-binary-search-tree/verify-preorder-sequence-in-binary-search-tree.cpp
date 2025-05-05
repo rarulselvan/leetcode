@@ -11,6 +11,7 @@ public:
         {
             if (value < last)
                 return false;
+
             while (!s.empty() && value > s.top()) 
             {
                 last = s.top();
