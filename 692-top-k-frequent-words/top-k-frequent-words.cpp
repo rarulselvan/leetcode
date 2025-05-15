@@ -12,9 +12,8 @@ public:
         vector <pair<string, int>> wordFrePair(countMap.begin(), countMap.end());
 
         // sort the vector based on the custom comparator function 
-       // sort (begin(wordFrePair), end(wordFrePair),myComparator);
-       sort(wordFrePair.begin(), wordFrePair.end(), myComparator);
-        
+        sort(wordFrePair.rbegin(), wordFrePair.rend(), myComparator);
+
         // declare resultant vector which contains expected output
         vector <string> result;
         // declare a varible idx to access temp elements
@@ -38,8 +37,8 @@ public:
     static bool myComparator (pair <string, int> &a, pair <string, int> &b)
     {
         if (a.second == b.second)
-            return a.first < b.first;
+            return a.first > b.first;
 
-        return a.second > b.second;
+        return a.second < b.second;
     }
 };
