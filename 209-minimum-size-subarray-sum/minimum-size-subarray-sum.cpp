@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) 
     {
@@ -24,4 +24,55 @@ public:
         // If 'ans' didn't change, no valid subarray was found, return 0 ...Otherwise, return the length of the shortest subarray
         return ans == n + 1 ? 0 : ans+1;//(0....ans so ans+1)
     }
+};*/
+class Solution {
+public:
+  int minSubArrayLen(int target, vector<int>& nums) 
+  {
+    int ans=nums.size()+1;
+    int left=0;
+    int right=0;
+    int sum=0;
+
+    for(right=0; right<nums.size(); right++)
+    {
+        sum=sum+nums[right];
+
+        while(sum>=target)
+        {
+            ans=min(ans, right-left+1);
+            sum=sum-nums[left];
+            left++;
+        }
+    }
+    return ans == nums.size()+1? 0:ans;
+  }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
