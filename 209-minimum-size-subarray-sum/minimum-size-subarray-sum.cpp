@@ -13,7 +13,7 @@ public:
             sum = sum + nums[right];               // Increase the sum by the current element
           
             // While sum is not smaller than the target and start pointer 'j' has not reached the end
-            while (right < n && sum >= target) 
+            while (sum >= target) 
             {
                 ans = min(ans, (right - left)); // Update the answer with the new minimum length
                 sum =sum-nums[left]; //remove the left pointer
@@ -22,6 +22,6 @@ public:
         }
       
         // If 'ans' didn't change, no valid subarray was found, return 0 ...Otherwise, return the length of the shortest subarray
-        return ans == n + 1 ? 0 : ans+1;
+        return ans == n + 1 ? 0 : ans+1;//(0....ans so ans+1)
     }
 };
