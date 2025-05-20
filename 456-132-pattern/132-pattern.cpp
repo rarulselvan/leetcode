@@ -1,32 +1,28 @@
-class Solution {
+class Solution 
+{
 public:
-    // This function checks if there is a 132 pattern in the input vector "nums".
-    // A 132 pattern is a subsequence of three integers where the first is smaller than the third and both are smaller than the second.
-    bool find132pattern(vector<int>& nums) {
-        // Initialize the variable to hold the value of the third element in the 132 pattern, initialized to the minimum integer value.
-        int thirdValue = INT_MIN;
-      
-        // Use a stack to help find potential candidates for the second element in the 132 pattern.
-        stack<int> candidates;
-      
-        // Iterate through the input array backwards.
-        for (int i = nums.size() - 1; i >= 0; --i) {
-            // Check if we have achieved the 132 pattern
-            if (nums[i] < thirdValue) {
-                // we found a valid 132 pattern
+    bool find132pattern(vector<int>& nums) 
+    {
+        stack<int>stk;
+        int ithValue=INT_MIN; //minimum among three
+
+        // Idea--> start from the right edge and add the elements into stack
+        // If the element to be added is less than the top of the stack ...keep adding it
+        // Otherwise ..pop the stack until the comparision(above) is true
+        // In the "pop" process get the max elements among the popped element
+
+        for(int i=nums.size()-1; i>=0; i--)
+        {
+            cout << ithValue << " ";
+            if(nums[i] <ithValue)
                 return true;
+            while(!stk.empty() && nums[i] > stk.top())
+            {
+                ithValue=stk.top();
+                stk.pop();
             }
-            // While we have candidates and the current number is greater than the candidate at the top of the stack
-            while (!candidates.empty() && candidates.top() < nums[i]) {
-                // The candidate could potentially be the third value in the pattern, so we update the thirdValue.
-                thirdValue = candidates.top();
-                candidates.pop(); // Remove the candidate as it has been used
-            }
-            // Push the current number onto the stack to be a candidate for the second position in the 132 pattern.
-            candidates.push(nums[i]);
+            stk.push(nums[i]);
         }
-      
-        // If we reach this point, no 132 pattern has been found.
         return false;
     }
 };
