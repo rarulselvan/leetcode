@@ -9,8 +9,7 @@ public:
     {
         string_size = s.size();
 
-        // Counting the frequency of each character in the input string.
-        for (char c : s) 
+       for (char c : s) 
             charCount[c]++;
 
         // 'middle_element' can only have one character in odd count for palindromes.
@@ -27,32 +26,26 @@ public:
                middle_element = character;
             }
         }
-
-        // Starting DFS with the potential middle element.
-        depthFirstSearch(middle_element);
+        depthFirstSearch(middle_element); //will have a charactor or 
         return possible_palindromes;
     }
 
     // Helper function to perform depth-first search to generate palindromes.
     void depthFirstSearch(string current_string) 
     {
-        // If the current string's size matches the input size, we found a palindrome.
         if (current_string.size() == string_size) 
         {
             possible_palindromes.push_back(current_string);
             return;
         }
 
-        // Construct new palindromes by adding characters around the 'current_string'.
         for (auto& [character, frequency] : charCount) 
         {
-            // We should have at least 2 characters to place around 'current_string'.
-            if (frequency > 1) {
-                frequency -= 2;
-                // Add the character on both sides of 'current_string' and recurse.
-                depthFirstSearch(character + current_string + character);
-                // Restore the count after the recursive call.
-                frequency += 2;
+            if (frequency > 1) 
+            {
+                frequency -= 2;// charCount[character] -= 2; //By doing so the charactors (two) will not be visible in the recursion
+                depthFirstSearch(character + current_string + character);                // Add the character on both sides of 'current_string' and recurse.
+                frequency += 2;// charCount[character] += 2;                // Restore the charactors after the recursive call.
             }
         }
     }
