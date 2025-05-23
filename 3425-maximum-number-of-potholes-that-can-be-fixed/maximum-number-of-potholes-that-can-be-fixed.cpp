@@ -20,8 +20,6 @@ public:
         if (k > 0) // Capture trailing potholes...x..xxx...(x)--> this x need to be processed
             potholeGrps.push_back(k);
 
-
-
         // Sort pothole segments in ascending order (smallest cost to repair first)
         sort(potholeGrps.rbegin(), potholeGrps.rend());
         for(auto x: potholeGrps)
@@ -30,7 +28,7 @@ public:
         int repaired = 0;
         for (int group : potholeGrps) 
         {
-            if (budget >= group+1) 
+            if (group+1 <= budget) 
             {
                 repaired += group;
                 budget -= group + 1;
