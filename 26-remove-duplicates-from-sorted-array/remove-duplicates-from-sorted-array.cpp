@@ -1,8 +1,8 @@
-class Solution {
+class Solution 
+{
 public:
     int removeDuplicates(vector<int>& arr)
     {
-        // To track seen elements
         unordered_set<int> s; 
     
         // To maintain the new size of the array
@@ -17,12 +17,8 @@ public:
                 idx++;
             }
         }
-        //remove the elements in arr 
+        //Truncate the array 
         arr.erase(arr.begin()+s.size(), arr.end());
-        //cout << s.size()<<"   "<<arr.size()<<endl;
-        // Return the size of the array 
-        // with unique elements
-        return s.size(); 
-        
+        return s.size();         
     }
 };
