@@ -51,9 +51,9 @@ public:
  
 
         LeafView(root->left);
+        LeafView(root->right);
                if(isLeaf(root))//drop off the leaf nodes
             ans.push_back(root->val);
-        LeafView(root->right);
     }
     void rightViewTree(TreeNode* root) 
     {
