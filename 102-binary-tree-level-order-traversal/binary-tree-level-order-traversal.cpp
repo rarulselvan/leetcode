@@ -51,22 +51,20 @@ public:
 
        while (!q.empty()) 
        {
-            vector<int> t;
+            vector<int> currentLevel;
             for (int n = q.size(); n; n--) 
             {
                 auto node = q.front();
                 q.pop();
-               // if(node)
-                {
-                    t.push_back(node->val);
-                    if (node->left) 
-                        q.push(node->left);
-                    
-                    if (node->right) 
-                        q.push(node->right);
-                }
+               
+                currentLevel.push_back(node->val);
+                if (node->left) 
+                    q.push(node->left);
+
+                if (node->right)
+                    q.push(node->right);
             }
-            ans.push_back(t);
+            ans.push_back(currentLevel);
         }
         return ans;
     }
