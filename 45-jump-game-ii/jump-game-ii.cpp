@@ -19,14 +19,11 @@ public:
 
         int result = INT_MAX;
 
-        for (int i = 1; i <= nums[start]; i++)  // Fix: Correct loop condition
+        for (int i = 1; i <= nums[start]; i++)  // These many locations can be reached...
         {
-           // if(start + i > end)
-               // break; // array boundary check
-
             int minJumps = jumpDP(nums, start + i, end);
             if (minJumps != INT_MAX) // Fix: Prevent overflow when adding 1
-                result = min(result, 1 + minJumps);
+                result = min(result, 1 + minJumps); //get the minimum value 
         }
         // at times nums[start] is zero "INT_MAX" will be returned
         dp[start] = result;
