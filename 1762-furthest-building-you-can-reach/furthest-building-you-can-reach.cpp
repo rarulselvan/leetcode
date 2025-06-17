@@ -40,7 +40,7 @@ public:
 class Solution
 {
 public:
-    int furthestBuilding(vector<int>& heights, int bricks, int L) 
+    int furthestBuilding(vector<int>& heights, int bricks, int ladders) 
     {
         // max heap to store difference between two adjacent
         // towers which we have covered using blocks
@@ -54,20 +54,20 @@ public:
 
             if (diff > 0) 
             {
+                //first try to use the bricks
                 bricks = bricks -diff;
                 maxB.push(diff);
 
-                // If all the blocks are used, start using
-                // ladders
-                if (bricks < 0) {
-                    bricks += maxB.top();
-                    maxB.pop();
-                    L--;
-                }
+                // If all the bricks are used(negative?), start using ladders
+                if (bricks < 0) 
+                {
+                    if (ladders == 0)
+                        break;
+                    ladders--;
 
-                // If all the ladders and blocks are used, break
-                if (L < 0)
-                    break;
+                    bricks += maxB.top(); //get the maximum including the current one and add to the bricks
+                    maxB.pop();
+                }
             }
             ans++;
         }
