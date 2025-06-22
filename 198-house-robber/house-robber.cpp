@@ -1,8 +1,7 @@
 class Solution 
 {
-public:
     vector<int> memo;
-
+public:
     int dfs(vector<int>& nums, int i) 
     {
         if (i >= nums.size()) 
@@ -17,7 +16,7 @@ public:
     int rob(vector<int>& nums) 
     {
         int n = nums.size();
-        memo=vector<int>(n, -1);
+        memo.assign(n, -1);
         return dfs(nums, 0);
     }
 };
