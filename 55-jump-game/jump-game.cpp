@@ -10,6 +10,8 @@ public:
             if (maxReachable < i)  //if maximum reachable is less than the current then not possible
                 return false;
             maxReachable = max(maxReachable, i + nums[i]);
+            if(maxReachable >=nums.size())
+                return true;
         }
         return true;
     }
