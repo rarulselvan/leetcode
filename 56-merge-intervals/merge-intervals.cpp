@@ -7,14 +7,13 @@ public:
         sort(arr.begin(), arr.end());
         vector<vector<int>> res;
         
-        for(auto x: arr)
+        for(auto curr: arr)
         {
             if(res.size()==0)
-                res.push_back(x);
+                res.push_back(curr);
             else
             {
                 vector<int> &prev=res.back();
-                vector<int> &curr=x;
                 if(prev[1]>=curr[0])
                     prev[1]= max(prev[1], curr[1]);
                 else
