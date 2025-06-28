@@ -1,38 +1,30 @@
-class Solution {
+class Solution 
+{
 public:
-    bool isValid(string str)
+    bool isValid(string s) 
     {
-        // Declare a stack to hold the previous brackets.
-        stack<char> temp;
-        for (int i = 0; i < str.length(); i++)
+        stack <char> st;
+
+        for(char x: s)
         {
-            if (temp.empty()) 
+            if(st.empty())
+                st.push(x);
+            else
             {
-                // Initially the stack will be empty
-                // Also the stack will be emty aftr the pop
-                // If the stack is empty push the current bracket
-                temp.push(str[i]);
-            }
-            else if ((temp.top() == '(' && str[i] == ')')
-                 || (temp.top() == '{' && str[i] == '}')
-                 || (temp.top() == '[' && str[i] == ']')) 
-            {
-                // If we found any complete pair of bracket
-                // then pop
-                temp.pop();
-            }
-            else 
-            {
-                // keep pushing until the match
-                temp.push(str[i]);
+                char temp=st.top();
+                if(temp=='(' && x==')')
+                    st.pop();
+                else if(temp=='{' && x=='}')
+                    st.pop();
+                else if(temp=='[' && x==']')
+                    st.pop();
+                else
+                    st.push(x);
             }
         }
-    if (temp.empty())
-    {
-        
-        // If stack is empty return true
-        return true;
+        if(st.empty())
+            return true;
+        else
+            return false;
     }
-    return false;
-}
 };
