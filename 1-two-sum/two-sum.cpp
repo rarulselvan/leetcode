@@ -1,74 +1,44 @@
-/*class Solution
+/*
+class Solution 
 {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) 
+    vector<int> twoSum(vector<int> &nums, int target)
     {
-        vector<int> ans;
-       // vector<int> *ans = new vector<int >;
-       for(int i=0; i<nums.size(); i++)
+        unordered_map<int, int> Map;
+
+        for(int i=0; i<nums.size(); i++)
         {
-            for(int j=i+1; j<nums.size(); j++)
-            {
-                if(nums[i]+nums[j]==target)
-                {
-                    cout<<"found it"<<endl;
-                    ans.push_back(i);
-                    ans.push_back(j);
-                }
-            }
+            int x1 = nums[i];
+            int x2 = target - x1;
+
+            // Check if the 2nd element  exists in the set
+            if (Map.find(x2) != Map.end())
+                return {i, Map[x2]};
+            else
+                Map[x1]=i;
         }
-        return ans;
+        return {};
     }
 };
-
-int* twoSum(int* nums, int numsSize, int target, int* returnSize) 
-{
-    for (int i = 0; i < numsSize; i++)
-    {
-        for (int j = i + 1; j < numsSize; j++) 
-        {
-            if (nums[j] == target- nums[i])
-            {
-                int *ans = (int *) malloc(sizeof(int)*2);
-                ans[0] = i;
-                ans[1] = j;
-                *returnSize=2;
-                return ans;
-            }
-        }
-    }
-    return NULL;
-} */
-
-class Solution
+*/
+class Solution 
 {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) 
+    vector<int> twoSum(vector<int> &nums, int target)
     {
-        vector <int> res;
+        unordered_map<int, int> Map;
 
-        vector<pair<int, int>> pairs;
-        for (int i = 0; i < nums.size(); i++)
-            pairs.push_back({nums[i], i});
-    
-        sort(pairs.begin(), pairs.end());
-
-        int i=0;
-        int j=nums.size()-1;
-        while(i<j)
+        for(int i=0; i<nums.size(); i++)
         {
-            int sum=pairs[i].first + pairs[j].first;
-            if(sum==target)
-            {
-                res.push_back(pairs[i].second);
-                res.push_back(pairs[j].second);
-                break;
-            }
-            else if(sum<target)
-                i++;
+            int x1 = nums[i];
+            int x2 = target - x1;
+
+            // Check if the 2nd element  exists in the set
+            if (Map.contains(x2))// != Map.end())
+                return {i, Map[x2]};
             else
-                j--;
+                Map[x1]=i;
         }
-        return res;
+        return {};
     }
 };
