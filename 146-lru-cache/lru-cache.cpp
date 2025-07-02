@@ -27,7 +27,7 @@ private:
 
     void addToHead(Node* node)
     {
-       if(head!=node)
+       //if(head!=node)
         {
             node->next = head->next;
             node->prev = head;
