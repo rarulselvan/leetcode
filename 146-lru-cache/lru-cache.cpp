@@ -8,8 +8,8 @@ private:
         Node* next;
         Node(int key, int val): key(key)
                                 , val(val)
-                                , prev(nullptr)
-                                , next(nullptr) 
+                                , prev(NULL)
+                                , next(NULL) 
                                 {}
     };
 
@@ -21,14 +21,13 @@ private:
 
     void removeNode(Node* node)
     {
-        Node *temp=node;
         node->prev->next = node->next;
         node->next->prev = node->prev;
     }
 
     void addToHead(Node* node)
     {
-       // if(head!=node)
+       if(head!=node)
         {
             node->next = head->next;
             node->prev = head;
@@ -76,7 +75,7 @@ public:
                 Node *node = tail->prev;
                 removeNode(node); //remove the last(but one?)entry from the doubly list
                 cache.erase(node->key);//erase from the hash map
-                --size;
+                size--;
             }
             Node* node = new Node(key, value);
             cache[key] = node;
