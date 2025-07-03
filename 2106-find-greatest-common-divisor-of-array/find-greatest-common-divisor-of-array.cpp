@@ -5,16 +5,13 @@ public:
     {
         int minNum =INT_MAX;
         int maxNum =INT_MIN;
+        
         for(auto x: nums)
-        {
-            if(x<minNum)
-                minNum=x;
-        }
+            minNum=min(x, minNum);
+
         for(auto x: nums)
-        {
-            if(x>maxNum)
-                maxNum=x;
-        }
+            maxNum=max(x, maxNum);
+
         return gcd(minNum, maxNum);
     }
 };
