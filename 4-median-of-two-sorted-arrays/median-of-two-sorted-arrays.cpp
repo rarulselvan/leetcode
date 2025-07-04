@@ -35,12 +35,12 @@ public:
             nums1.push_back(x);
         sort(nums1.begin(), nums1.end());
 
-        int size=nums1.size();
-        int mid=size/2;
+        int len=nums1.size();
+        int mid=len/2;
 
-        if(size%2)
+        if(len%2)//odd number...return the mid number
             return nums1[mid];
-        else
+        else //even number return the average
             return (nums1[mid-1]+nums1[mid])/2.0;
     }
 };
