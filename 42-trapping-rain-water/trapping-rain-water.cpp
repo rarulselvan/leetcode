@@ -3,12 +3,10 @@ class Solution
 public:
     int trap(vector<int>& height)
     {
-        vector<int>leftSeen;
-        vector<int>rightSeen;
+        vector<int>leftSeen(height.size());
+        vector<int>rightSeen(height.size());
         int n=height.size();
-        leftSeen.resize(n);
-        rightSeen.resize(n);
-
+       
         //Compute Left Maximum Heights  for every position
         leftSeen[0]=height[0];
         for(int i=1; i<n; i++)
@@ -25,9 +23,9 @@ public:
 
         //get the minium of leftseen and rightseen ..from the subtract the particular position
         int water=0;
-        for(int i=0; i<n; i++)
+        for(int i=1; i<n; i++)
         {    
-            water+= min(leftSeen[i],rightSeen[i])-height[i]   ;   
+            water+= min(leftSeen[i],rightSeen[i])-height[i];   
         }
         return water;
     }
