@@ -11,7 +11,9 @@
  */
 class Solution 
 {
+    TreeNode* prev=NULL;
 public:
+/*
     bool isBST(struct TreeNode* root,struct TreeNode* &prev)
     {
         if(root)
@@ -29,11 +31,24 @@ public:
                 return false;
         }
         return true;
-    }
+    }*/
 
     bool isValidBST(struct TreeNode* root) 
     {
-        struct TreeNode* prev=NULL;
-        return isBST(root, prev);  
+        if(root)
+        {
+            if(isValidBST(root->left)==false)
+                return false;
+            if(prev)
+            {
+                if(prev->val>=root->val)
+                    return false;
+            }
+            prev=root;
+
+            if(isValidBST(root->right)==false)
+                return false;
+        }
+        return true;
     }
 };
