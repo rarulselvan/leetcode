@@ -35,7 +35,7 @@ public:
                     q.push(node->left);
 
                 if (node->right)
-                q.push(node->right);
+                    q.push(node->right);
             }
             ans.push_back(currentLevel);
         }
