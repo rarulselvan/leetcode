@@ -14,21 +14,24 @@ class Solution
 public:
     bool isBalanced(TreeNode* root) 
     {
-        if(maxHeightDifference(root)==INT_MAX)
-            return false;
-        else
+        // If tree is empty it is height balanced
+        if (root == NULL)
             return true;
+
+        int lHeight = height(root->left);
+        int rHeight = height(root->right);
+        
+        // If absolute height difference is greater than 1... then return false no need to explore the left and right sub trees
+        if (abs(lHeight - rHeight) > 1)
+            return false;
+        //This levle is balanced...explore left and right sub trees 
+        return isBalanced(root->left) && isBalanced(root->right);
     }
-    int maxHeightDifference(TreeNode* root)
+    int height(TreeNode *root)
     {
         if(!root)
             return 0;
-        int leftHeight=maxHeightDifference(root->left);
-        int rightHeight=maxHeightDifference(root->right);
-
-        if (leftHeight == INT_MAX || rightHeight == INT_MAX || abs(leftHeight - rightHeight) > 1) 
-            return INT_MAX;
-
-        return 1+max(leftHeight,rightHeight);
+        else
+           return  1+max(height(root->left), height(root->right));
     }
 };
