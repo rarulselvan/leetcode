@@ -8,19 +8,17 @@ public:
     Node* parent;
 };
 */
-
-class Solution 
-{
+class Solution {
 public:
     Node* lowestCommonAncestor(Node* p, Node * q) 
     {
         Node *first=p;
         Node *second=q;
 
-        while(first !=second)
+        while(first != second)
         {
-            first=first->parent?first->parent:q;
-            second=second->parent?second->parent:p;
+            first= first->parent? first->parent:q;
+            second= second->parent? second->parent:p;
         }
         return first;
     }
