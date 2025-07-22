@@ -26,6 +26,7 @@ public:
     }
 };
 */
+/*
 class Solution 
 {
 public:
@@ -42,5 +43,52 @@ public:
             return nums1[mid];
         else //even number return the average
             return (nums1[mid-1]+nums1[mid])/2.0;
+    }
+};*/
+class Solution 
+{
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+    {
+        int m=nums1.size();
+        int n=nums2.size();
+        int i=0;
+        int j=0;
+
+        int value1=0;
+        int value2=0;
+        //find one value (odd numbers)...two values for even number
+        for (int count = 0; count <= (m + n) / 2; count++) 
+        {
+            value1=value2;
+        
+            if(i<m && j<n)
+            {
+                if(nums1[i]<nums2[j])
+                {
+                    value2=nums1[i];
+                    i++;
+                }
+                else
+                {
+                    value2=nums2[j];
+                    j++;
+                }
+            }
+            else if(i<m)
+            {
+                value2=nums1[i];
+                i++;
+            }
+            else
+            {
+                value2=nums2[j];
+                j++;
+            }
+        }
+        if((m+n)%2)
+            return value2;
+        else
+            return (double)(value1+value2)/2;
     }
 };
