@@ -13,14 +13,14 @@
 class Solution 
 {
 private:
-    int res;
+    int res=0;
 public:
     void check(TreeNode* root, int Left, int Right) 
     {
         if(root == NULL) 
             return;
 
-        if(root->val >= Left && root->val <= Right) 
+        if(root->val >=Left && root->val <= Right) 
             res+=root->val;
         
         check(root->left, Left, Right);
@@ -28,11 +28,7 @@ public:
     }
 
     int rangeSumBST(TreeNode* root, int L, int R)
-    {
-        if(root == NULL)
-            return 0;
-    
-        res = 0;
+    {       
         check(root, L, R);
         return res;
     }
