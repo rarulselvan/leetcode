@@ -48,12 +48,11 @@ public:
         if (root == NULL)
             return;
         
- 
+        if(isLeaf(root))
+            ans.push_back(root->val);
 
         LeafView(root->left);
         LeafView(root->right);
-               if(isLeaf(root))//drop off the leaf nodes
-            ans.push_back(root->val);
     }
     void rightViewTree(TreeNode* root) 
     {
