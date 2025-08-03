@@ -10,9 +10,9 @@ public:
         unordered_set<int> st(nums.begin(), nums.end());
         int maxStreak = 0;
 
-
         for(auto num: st)
         {
+            //If the previous number not exists...this is the first number in the streak hence check it out
             if(st.count(num-1)==0)
             {
                 int currentNum = num;
@@ -28,26 +28,3 @@ public:
         return maxStreak;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
