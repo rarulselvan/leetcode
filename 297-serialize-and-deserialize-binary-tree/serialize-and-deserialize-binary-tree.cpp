@@ -7,11 +7,13 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Codec {
+class Codec 
+{
 public:
 
     // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
+    string serialize(TreeNode* root) 
+    {
         
         if(root==NULL)
             return " null";
@@ -22,7 +24,6 @@ public:
             string rgt=serialize(root->right);
             return " "+rt+le+rgt;
         }
-
     }
     TreeNode* buildTree(istringstream& ss)
     {
@@ -46,7 +47,3 @@ public:
     }
     
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec ser, deser;
-// TreeNode* ans = deser.deserialize(ser.serialize(root));
