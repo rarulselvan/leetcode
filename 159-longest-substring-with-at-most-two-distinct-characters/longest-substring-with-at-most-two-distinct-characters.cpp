@@ -15,9 +15,11 @@ public:
 
             while (charFrequency.size() > 2) 
             {
-                if(charFrequency[s[left]])
-                charFrequency[s[left]]--;
-                if (charFrequency[s[left]] == 0) // is required to remove key-value pairs when the frequency of a key reaches zero, even if the value is still present in the map.
+                //if(charFrequency[s[left]])
+                    charFrequency[s[left]]--;
+                // the folliwunbg is required to remove key-value pairs when the frequency of a key reaches zero,
+                // even if the value is still present in the map.
+                if (charFrequency[s[left]] == 0) 
                    charFrequency.erase(s[left]);
                 
                 left++;
@@ -29,3 +31,36 @@ public:
         return maxLength;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
