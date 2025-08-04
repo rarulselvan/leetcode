@@ -28,18 +28,6 @@ public:
                 return true;
             else if(slowPointer==fastPointer)
                 return false;
-        }      
-      /*
-        while (slowPointer != fastPointer) 
-        {
-            slowPointer = getNextNumber(slowPointer);
-            fastPointer = getNextNumber(getNextNumber(fastPointer));
         }
-
-        // If slowPointer is 1, n is a happy number
-        if(slowPointer == 1)
-            return true;
-        else
-            return false;*/
     }
 };
