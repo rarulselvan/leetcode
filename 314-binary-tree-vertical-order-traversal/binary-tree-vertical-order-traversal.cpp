@@ -12,23 +12,27 @@
 
 class Solution 
 {
-    // hd -> level -> multiset of values (to keep order)
+    // hd -> level -> vector of values (to keep order)
     map<int, map<int, vector<int>>> nodes;
+    vector<vector<int>> result;
 
 public:
     vector<vector<int>> verticalOrder(TreeNode* root) 
     {
         DFS(root, 0, 0); // start at hd=0, level=0
 
-        vector<vector<int>> result;
-
-        for (auto& [hd, levelMap] : nodes) 
+        for (auto& [hd, levelVector] : nodes) 
         {
             vector<int> col;
-            for (auto& [level, values] : levelMap)
+            for (auto& [level, values] : levelVector)
+            {
                 col.insert(col.end(), values.begin(), values.end());
             
-            result.push_back(col);
+            for(int x: values)
+                cout<<x<<" ";
+                cout <<endl;
+            }
+           result.push_back(col);
         }
         return result;
     }
@@ -37,11 +41,11 @@ public:
     {
         if (!node) 
             return;
-
-        //nodes[hd][level].insert(node->val);
-        nodes[hd][level].push_back(node->val);
-
+        //cout <<hd<<level<<node->val<<endl;
         DFS(node->left, hd - 1, level + 1);  // left child: hd - 1
         DFS(node->right, hd + 1, level + 1); // right child: hd + 1
+        nodes[hd][level].push_back(node->val);
+
+        
     }
 };
