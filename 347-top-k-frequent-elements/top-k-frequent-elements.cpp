@@ -1,3 +1,4 @@
+
 /*class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) 
@@ -71,11 +72,11 @@ public:
         vector<pair<int, int>>arr;
 
         for(auto x: nums)
-        Map[x]++;
-
+            Map[x]++;
 
         for(auto x: Map)
             arr.push_back({x.second, x.first});
+        
         
         sort(arr.rbegin(),arr.rend());//sort decreasing order
 
@@ -84,6 +85,5 @@ public:
             res.push_back((arr[i].second));
 
         return res;
-
     }
 };
