@@ -5,7 +5,6 @@ public:
     {
         int n = arr.size();
 
-        // to store the results
         vector<int> res;
 
         // to store the max value
@@ -13,7 +12,7 @@ public:
 
         // Initialize the heap with the first k elements
         for (int i = 0; i < k; i++)
-            heap.push({ arr[i], i });
+            heap.push({ arr[i], i });//push element and the index together
 
         // The maximum element in the first window
         res.push_back(heap.top().first);
@@ -21,7 +20,7 @@ public:
         // Process the remaining elements
         for (int i = k; i < arr.size(); i++) {
 
-            // Add the current element to the heap
+            // Add the next element
             heap.push({ arr[i], i });
 
             // Remove elements that are outside the current
