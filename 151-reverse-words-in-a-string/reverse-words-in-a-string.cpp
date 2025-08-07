@@ -2,10 +2,10 @@
 class Solution 
 {
     public:
-        string reverseWords(string str)
+        string reverseWords(string sentence)
         {
             // Split the string into words
-            stringstream ss(str);
+            stringstream ss(sentence);
             string word; 
             vector<string> arr;
           
@@ -17,17 +17,13 @@ class Solution
             reverse(arr.begin(), arr.end());  
         
             // Join the words in reverse order  
-            string res;// = "";  
+            string res;
             for (string s : arr)
-            { 
+            {
                 if(res.empty())
-                    res += (s + ""); 
+                    res=res+s;
                 else
-                {
-                    res += " "; 
-                    res += (s); 
-                }
-
+                    res=res+" "+s;
             }
             return res;
         }
