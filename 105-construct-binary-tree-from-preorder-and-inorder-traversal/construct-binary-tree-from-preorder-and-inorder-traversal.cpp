@@ -34,17 +34,15 @@ public:
         int value = preorder[preIndex++];
         TreeNode* root = new TreeNode(value);
 
-        int index = getIndex(inorder, left, right, value);
+        int index = getIndex(value);//from hash map
         root->left = buildTreeHelper(preorder, inorder, preIndex, left, index - 1);
         root->right = buildTreeHelper(preorder, inorder, preIndex, index + 1, right);
 
         return root;
     }
 
-    int getIndex(const vector<int>& inorder, int left, int right, int value)
+    int getIndex(int value)
     {
         return inorderIndexMap[value];
-        
-        //return -1; // Should not happen if input is valid
     }
 };
