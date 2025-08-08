@@ -14,27 +14,25 @@ class Solution
 public:
     bool hasPathSum(TreeNode* root, int targetSum) 
     {        
-        //recursive program
-        //pre-order traversal
+        //recursive program .... pre-order traversal
         if(root==NULL)
             return false;
 
         int currentSum=targetSum-root->val;
-        //Means reached the leaf node
+        
+        //base case
         if(currentSum ==0 && root->left==NULL && root->right==NULL)
             return true;
         
         bool result=0;
 
-       // if(root->left)
-        {
-            result=hasPathSum(root->left, currentSum);
-            if(result==true)
-                return result;
-            //If thie path is false attempt the right tree
-        }
-      //  if(root->right)
-            result= hasPathSum(root->right, currentSum);
+       
+        result=hasPathSum(root->left, currentSum);
+        if(result==true)
+            return result;
+        //If thie path is false attempt the right tree
+
+        result= hasPathSum(root->right, currentSum);
 
         return result;
     }
