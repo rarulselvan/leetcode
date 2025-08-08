@@ -13,10 +13,16 @@
  
 class Solution 
 {
+        unordered_map<int, int> inorderIndexMap;
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) 
     {
         int preIndex = 0;
+        // Build a map from value -> index in inorder
+    
+        for (int i = 0; i < inorder.size(); i++) 
+            inorderIndexMap[inorder[i]] = i;
+        
         return buildTreeHelper(preorder, inorder, preIndex, 0, inorder.size() - 1);       
     }
 
@@ -37,24 +43,8 @@ public:
 
     int getIndex(const vector<int>& inorder, int left, int right, int value)
     {
+        return inorderIndexMap[value];
         
-        for (int i = 0; i < inorder.size(); ++i)
-        {
-            if (inorder[i] == value)
-                return i;
-        }
-        /*
-        while(left<=right)
-        {
-            int mid=left+(right-left)/2;
-            if(value<inorder[mid])
-                right=mid-1;
-            else if(value>inorder[mid])
-                left=mid+1;
-            else
-                return mid;
-        }*/
-        return -1; // Should not happen if input is valid
+        //return -1; // Should not happen if input is valid
     }
 };
-
