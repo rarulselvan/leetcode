@@ -26,14 +26,14 @@ public:
         
         bool result=0;
 
-        if(root->left)
+       // if(root->left)
         {
             result=hasPathSum(root->left, currentSum);
             if(result==true)
                 return result;
             //If thie path is false attempt the right tree
         }
-        if(root->right)
+      //  if(root->right)
             result= hasPathSum(root->right, currentSum);
 
         return result;
