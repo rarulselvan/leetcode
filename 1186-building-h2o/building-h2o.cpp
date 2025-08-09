@@ -27,7 +27,7 @@ public:
             oxygenCount = 0;
             cv.notify_all();
         }
-         releaseHydrogen();  // Bond immediately
+         releaseHydrogen();  // hydrogen atom has participated in forming a molecule of water.
     }
 
     void oxygen(std::function<void()> releaseOxygen) 
@@ -47,6 +47,6 @@ public:
 
             cv.notify_all();
         }
-        releaseOxygen();  // Bond immediately
+        releaseOxygen();  // oxygen atom has participated in forming a molecule of water.
     }
 };
