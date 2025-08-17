@@ -1,6 +1,7 @@
 class Solution 
 {
 public:
+/*
     int longestConsecutive(vector<int>& nums) 
     {
         if (nums.size()==0)
@@ -26,6 +27,33 @@ public:
                 }
                 maxStreak=max(maxStreak,currentStreak);
             }
+        }
+        return maxStreak;
+    }
+    */
+     int longestConsecutive(vector<int>& nums) 
+    {
+        if (nums.empty())
+            return 0;
+
+        // store unique numbers in sorted order
+        set<int> st(nums.begin(), nums.end());
+
+        int maxStreak = 1;
+        int currentStreak = 1;
+
+        auto prev = st.begin();
+        for (auto it = next(st.begin()); it != st.end(); ++it)
+        {
+            if (*it == *prev + 1) {
+                // consecutive → extend streak
+                currentStreak++;
+            } else {
+                // not consecutive → reset streak
+                currentStreak = 1;
+            }
+            maxStreak = max(maxStreak, currentStreak);
+            prev = it;
         }
         return maxStreak;
     }
