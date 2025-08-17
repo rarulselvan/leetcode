@@ -9,7 +9,9 @@ public:
         //add all the elements into set to remove the duplicates
         unordered_set<int> st(nums.begin(), nums.end());
         int maxStreak = 0;
-
+        for(int x:st)
+            cout <<x <<" ";
+        cout <<endl;
         for(auto num: st)
         {
             //If the previous number not exists...this is the first number in the streak hence check it out
