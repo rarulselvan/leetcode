@@ -7,7 +7,7 @@ public:
             return 0;
         
         //add all the elements into set to remove the duplicates
-        unordered_set<int> st(nums.begin(), nums.end());
+        set<int> st(nums.begin(), nums.end());
         int maxStreak = 0;
         for(int x:st)
             cout <<x <<" ";
