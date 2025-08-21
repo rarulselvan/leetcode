@@ -18,10 +18,11 @@ public:
             return " null";
         else
         {
+            //Pre order traversal.........................................
             string rt=to_string(root->val);
             string le=serialize(root->left);
             string rgt=serialize(root->right);
-            return " "+rt+le+rgt; // all the elements are added into a string with one space
+            return " "+rt+le+rgt; // all the elements are added into a string with one blank space
         }
     }
     TreeNode* buildTree(stringstream& ss)
@@ -40,7 +41,8 @@ public:
     }
 
     // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) {
+    TreeNode* deserialize(string data)
+    {
         stringstream ss(data);
         return buildTree(ss);
     }
