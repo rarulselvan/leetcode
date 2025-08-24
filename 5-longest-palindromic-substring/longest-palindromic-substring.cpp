@@ -54,15 +54,13 @@ public:
 
     bool isPalindrome(int i, int j) 
     {
-        if(i>j)
-            cout <<" This is vague"<<endl;
-        if (i >= j)
-            return dp[i][j]=true;
+        if (i >= j) // in the recursive call i>j is possible ..hence ignore it as true
+            return true;            
 
         //Already computed hence resturn the value
-        if (dp[i][j] != -1) 
+        if (dp[i][j] != -1)     
             return dp[i][j];
-        
+    
         return dp[i][j] = (s[i] == s[j] && isPalindrome(i + 1, j - 1));
     }
 
@@ -72,7 +70,7 @@ public:
         int n = s.size();
         dp.assign(n,vector<int>(n, -1));
         
-        int start = 0, maxLen = 1;
+        int start = 0, maxLen = 0;
         
         for (int i = 0; i < n; i++) 
         {
@@ -87,6 +85,6 @@ public:
                     continue;
             }
         }
-        return s.substr(start, maxLen);
+        return str.substr(start, maxLen);
     }
 };
