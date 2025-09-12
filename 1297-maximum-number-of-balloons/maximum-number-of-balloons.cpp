@@ -1,9 +1,9 @@
 class Solution
 {
 public:
-    int maxNumberOfBalloons(std::string text) 
+    int maxNumberOfBalloons(string text) 
     {
-        std::unordered_map<char, int> freq;
+        unordered_map<char, int> freq;
 
         // Count character frequencies in text
         for (char c : text)
