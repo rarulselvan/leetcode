@@ -11,7 +11,7 @@ public:
         for(int i=0; i<nums.size(); i++)
             lisEndAtI(nums, i);
         
-        for(int i=0; i<nums.size();i++)
+        for(int i=0; i<nums.size();i++)//get the max in the array
             res=max(res, dp[i]);        
         return res;
     }
@@ -22,7 +22,8 @@ public:
         
         int mx = 1; //start with one because every increasing sequence there are two numbers
 
-        for (int prev = 0; prev <i; prev++)
+        //for (int prev = 0; prev <i; prev++)
+        for (int prev = i; prev >=0; prev--)
         {
             if (nums[prev] < nums[i])
                 mx = max(mx, 1+lisEndAtI(nums, prev));
