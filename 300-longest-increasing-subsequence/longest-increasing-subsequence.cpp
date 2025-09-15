@@ -23,7 +23,7 @@ public:
         int mx = 1; //start with one because every increasing sequence there are two numbers
 
         //for (int prev = 0; prev <i; prev++)
-        for (int prev = i; prev >=0; prev--)
+        for (int prev = i-1; prev >=0; prev--)
         {
             if (nums[prev] < nums[i])
                 mx = max(mx, 1+lisEndAtI(nums, prev));
